@@ -1,0 +1,7 @@
+{% if feedbacks %}
+    {% for feedback in feedbacks %}
+        {% include '_feedback_item.html' %}
+    {% endfor %}
+{% else %}
+    <p>Пока нет отзывов. Будьте первым!</p>
+{% endif %} 

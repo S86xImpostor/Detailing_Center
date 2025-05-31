@@ -1,0 +1,17 @@
+<div class="feedback-item">
+    <div class="feedback-header">
+        <div class="feedback-author">{{ feedback.customer_name or 'Анонимный пользователь' }}</div>
+        <div class="feedback-rating">
+            {% for i in range(feedback.rating) %}
+            <i class="fas fa-star"></i>
+            {% endfor %}
+            {% for i in range(5 - feedback.rating) %}
+            <i class="far fa-star"></i>
+            {% endfor %}
+        </div>
+        <div class="feedback-date">{{ feedback.created_at.split('T')[0] }}</div>
+    </div>
+    <div class="feedback-text">
+        {{ feedback.message }}
+    </div>
+</div> 

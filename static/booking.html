@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Онлайн запись | Детейлинг центр</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+</head>
+<body>
+     <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Детейлинг Центр">
+                <span>Детейлинг Центр</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="schedule.html">Расписание</a></li>
+                    <li><a href="booking.html" class="active">Онлайн запись</a></li>
+                    <li><a href="feedback.html">Отзывы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Онлайн запись</h1>
+                <nav class="breadcrumbs" aria-label="Навигация">
+                    <a href="index.html">Главная</a> / <span>Онлайн запись</span>
+                </nav>
+            </div>
+        </section>
+        
+        <section class="booking-section">
+            <div class="container">
+                <div class="booking-steps">
+                    <div class="step active" data-step="1">
+                        <span>1</span>
+                        <p>Выбор услуги</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span>2</span>
+                        <p>Выбор даты и времени</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span>3</span>
+                        <p>Контактные данные</p>
+                    </div>
+                    <div class="step" data-step="4">
+                        <span>4</span>
+                        <p>Подтверждение</p>
+                    </div>
+                </div>
+                
+                <form id="booking-form" class="booking-form" novalidate>
+                    <!-- Шаг 1: Выбор услуги -->
+                    <div class="form-step active" data-step="1" role="tabpanel">
+                        <h2>Выберите услугу</h2>
+                        <div class="services-list" id="booking-services">
+                            <!-- Заполнится через JavaScript -->
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn-primary next-step" disabled aria-disabled="true">Далее</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 2: Выбор даты и времени -->
+                    <div class="form-step" data-step="2" role="tabpanel" hidden>
+                        <div class="form-group" aria-live="polite">
+                            <label for="booking-date">Дата:</label>
+                            <input type="text" id="booking-date" class="datepicker" 
+                                   placeholder="Выберите дату" readonly required 
+                                   aria-describedby="date-helper">
+                            <small id="date-helper" class="helper-text">Доступные даты: пн-пт</small>
+                        </div>
+                        <div id="time-slots" class="time-slots-container"></div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn-outline prev-step">Назад</button>
+                            <button type="button" class="btn-primary next-step">Далее</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 3: Контактные данные -->
+                    <div class="form-step" data-step="3" role="tabpanel" hidden>
+                        <div class="form-group">
+                            <label for="client-name">Ваше имя:</label>
+                            <input type="text" id="client-name" name="name" 
+                                   autocomplete="name" required
+                                   aria-describedby="name-error">
+                            <small id="name-error" class="error-text" hidden></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-phone">Телефон:</label>
+                            <input type="tel" id="client-phone" name="phone" 
+                                   autocomplete="tel" required
+                                   aria-describedby="phone-error">
+                            <small id="phone-error" class="error-text" hidden></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-email">Email (необязательно):</label>
+                            <input type="email" id="client-email" name="email"
+                                   aria-describedby="email-error">
+                            <small id="email-error" class="error-text" hidden></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-car">Модель автомобиля:</label>
+                            <input type="text" id="client-car" name="car" required
+                                   aria-describedby="car-error">
+                            <small id="car-error" class="error-text" hidden></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="client-notes">Примечания:</label>
+                            <textarea id="client-notes" name="notes" rows="3"></textarea>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn-outline prev-step">Назад</button>
+                            <button type="button" class="btn-primary next-step">Далее</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Шаг 4: Подтверждение -->
+                   <div class="form-step" data-step="4" role="tabpanel" hidden>
+                        <h2>Подтверждение записи</h2>
+                        <div class="booking-summary">
+                            <h3>Детали заказа</h3>
+                            <div class="summary-item">
+                                <span>Услуга:</span>
+                                <span id="summary-service"></span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Дата и время:</span>
+                                <span id="summary-datetime"></span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Стоимость:</span>
+                                <span id="summary-price"></span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Имя:</span>
+                                <span id="summary-name"></span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Телефон:</span>
+                                <span id="summary-phone"></span>
+                            </div>
+                            <div class="summary-item">
+                                <span>Автомобиль:</span>
+                                <span id="summary-car"></span>
+                            </div>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="agree-terms" name="agree" required>
+                            <label for="agree-terms">Я согласен с условиями предоставления услуг и политикой конфиденциальности</label>
+                        </div>
+                        <div class="form-navigation">
+                            <button type="button" class="btn-outline prev-step">Назад</button>
+                            <button type="submit" class="btn-primary">Подтвердить запись</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="booking-success" id="booking-success" hidden
+                     aria-live="polite" role="alert">
+                    <div class="success-icon">✓</div>
+                    <h2>Запись успешно оформлена!</h2>
+                    <p>Мы отправили детали записи на ваш телефон. Ждем вас в назначенное время.</p>
+                    <div class="success-details" id="success-details"></div>
+                    <a href="index.html" class="btn-primary">Вернуться на главную</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Москва, ул. Автодетейлинга, 12</p>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@detailing-center.ru</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 21:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <ul>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="booking.html">Запись онлайн</a></li>
+                    <li><a href="feedback.html">Оставить отзыв</a></li>
+                    <li><a href="admin/login.html">Вход для администратора</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 Детейлинг Центр. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/l10n/ru.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/database.js"></script>
+</body>
+</html>

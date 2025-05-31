@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги | Детейлинг центр</title>
+    <link rel="stylesheet" href="./css/style.css"> <!-- Исправленный путь -->
+    <link rel="stylesheet" href="./css/mobile.css" media="(max-width: 768px)">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Детейлинг Центр">
+                <span>Детейлинг Центр</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html" >Главная</a></li>
+                    <li><a href="services.html" class="active">Услуги</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="schedule.html">Расписание</a></li>
+                    <li><a href="booking.html">Онлайн запись</a></li>
+                    <li><a href="feedback.html">Отзывы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Наши услуги</h1>
+                <nav class="breadcrumbs">
+                    <a href="index.html">Главная</a> / <span>Услуги</span>
+                </nav>
+            </div>
+        </section>
+        
+        <section class="services-page">
+            <div class="container">
+                <div class="filters-section">
+                    <h2>Фильтр услуг</h2>
+                    <form id="services-filter" class="filter-form">
+                        <div class="filter-group">
+                            <label for="category-filter">Категория:</label>
+                            <select id="category-filter" name="category">
+                                <option value="">Все категории</option>
+                                <option value="wash">Мойка</option>
+                                <option value="polish">Полировка</option>
+                                <option value="coating">Покрытия</option>
+                                <option value="interior">Салон</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="price-range">Ценовой диапазон:</label>
+                            <div class="price-range">
+                                <input type="number" id="price-from" placeholder="От" min="0">
+                                <span>-</span>
+                                <input type="number" id="price-to" placeholder="До" min="0">
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="duration-filter">Длительность:</label>
+                            <select id="duration-filter" name="duration">
+                                <option value="">Любая</option>
+                                <option value="1">До 1 часа</option>
+                                <option value="2">До 2 часов</option>
+                                <option value="3">До 3 часов</option>
+                                <option value="4">Более 3 часов</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Применить фильтры</button>
+                        <button type="reset" class="btn-outline">Сбросить</button>
+                    </form>
+                </div>
+                
+                <div class="services-container" id="services-container">
+                    <!-- Услуги будут загружены через JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="service-calculator">
+            <div class="container">
+                <h2>Калькулятор услуг</h2>
+                <div class="calculator-container">
+                    <form id="calculator-form">
+                        <div class="form-group">
+                            <label for="calc-service">Выберите услугу:</label>
+                            <select id="calc-service" name="service" required>
+                                <option value="">-- Выберите услугу --</option>
+                                <!-- Заполнится через JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Дополнительные опции:</label>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="premium-materials" name="premium">
+                                <label for="premium-materials">Премиум материалы (+20%)</label>
+                            </div>
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="express-service" name="express">
+                                <label for="express-service">Срочный заказ (+30%)</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="car-size">Размер автомобиля:</label>
+                            <select id="car-size" name="size">
+                                <option value="small">Малый (седан, хэтчбек)</option>
+                                <option value="medium" selected>Средний (кроссовер, универсал)</option>
+                                <option value="large">Большой (внедорожник, минивэн)</option>
+                                <option value="xlarge">Очень большой (пикап, микроавтобус)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="button" id="calculate-btn" class="btn-primary">Рассчитать стоимость</button>
+                    </form>
+                    
+                    <div class="calculator-result" id="calculator-result">
+                        <h3>Итоговая стоимость:</h3>
+                        <div class="result-price" id="result-price">0 руб.</div>
+                        <div class="result-details" id="result-details">
+                            Выберите услугу для расчета
+                        </div>
+                        <a href="booking.html" class="btn-secondary" id="book-now-btn" style="display: none;">Записаться</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+     <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <p>г. Москва, ул. Автодетейлинга, 12</p>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Email: info@detailing-center.ru</p>
+            </div>
+            <div class="footer-section">
+                <h3>Часы работы</h3>
+                <p>Пн-Пт: 9:00 - 21:00</p>
+                <p>Сб-Вс: 10:00 - 18:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <ul>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="booking.html">Запись онлайн</a></li>
+                    <li><a href="feedback.html">Оставить отзыв</a></li>
+                    <li><a href="admin/login.html">Вход для администратора</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 Детейлинг Центр. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script src="js/services.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
