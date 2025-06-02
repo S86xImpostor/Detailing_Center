@@ -35,6 +35,12 @@ def get_db():
 def index():
     return send_from_directory('static', 'feedback.html')
 
+@app.route('/<path:filename>')
+def serve_static(filename):
+    if filename.endswith('.html'):
+        return send_from_directory('static', filename)
+    return '', 404
+
 @app.route('/css/<path:filename>')
 def serve_css(filename):
     return send_from_directory('static/css', filename)
@@ -139,6 +145,62 @@ def get_feedbacks():
     except Exception as e:
         logger.error(f"Ошибка при получении отзывов: {str(e)}")
         logger.error(f"Traceback: {traceback.format_exc()}")
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/services', methods=['GET'])
+def get_services():
+    logger.debug("Запрос на получение списка услуг")
+    db = get_db()
+    try:
+        # Получаем все активные услуги с информацией о категории
+        cursor = db.execute('''
+            SELECT s.*, sc.category_name, sc.category_slug
+            FROM services s
+            JOIN service_categories sc ON s.category_id = sc.category_id
+            WHERE s.is_active = 1
+            ORDER BY sc.display_order, s.service_name
+        ''')
+        services = cursor.fetchall()
+        logger.debug(f"Найдено услуг: {len(services)}")
+        
+        # Преобразуем результаты в список словарей
+        services_list = []
+        for service in services:
+            services_list.append({
+                'id': service['service_id'],
+                'name': service['service_name'],
+                'description': service['description'],
+                'base_price': service['base_price'],
+                'duration': service['duration_minutes'] // 60,  # Конвертируем минуты в часы
+                'category': service['category_slug'],
+                'category_name': service['category_name'],
+                'image_url': service['image_url']
+            })
+        
+        return jsonify(services_list)
+    except Exception as e:
+        logger.error(f"Ошибка при получении услуг: {str(e)}")
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/services/categories', methods=['GET'])
+def get_service_categories():
+    logger.debug("Запрос на получение категорий услуг")
+    db = get_db()
+    try:
+        cursor = db.execute('''
+            SELECT category_id, category_name, category_slug, description
+            FROM service_categories
+            ORDER BY display_order
+        ''')
+        categories = cursor.fetchall()
+        return jsonify([dict(category) for category in categories])
+    except Exception as e:
+        logger.error(f"Ошибка при получении категорий: {str(e)}")
         return jsonify({'error': str(e)}), 500
     finally:
         db.close()

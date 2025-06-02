@@ -272,44 +272,81 @@ a:hover {
 }
 
 .service-card {
-    background-color: white;
+    background: #fff;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
 }
 
 .service-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.service-card img { 
+.service-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
 }
 
 .service-card .card-content {
-    padding: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .service-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--primary-color);
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+    color: #333;
 }
 
 .service-card p {
-    color: var(--gray-color);
-    margin-bottom: 15px;
+    margin: 0 0 1rem;
+    color: #666;
+    flex-grow: 1;
 }
 
 .service-card .price {
-    font-weight: 700;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.service-card .duration {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.service-card .category {
+    color: #007bff;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.service-card .btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+}
+
+.service-card .btn-primary:hover {
+    background-color: #0056b3;
 }
 
 /* Gallery section */
@@ -1273,40 +1310,76 @@ a:hover {
 }
 
 .service-card-page {
-    background: white;
+    background: #fff;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
 }
 
 .service-card-page:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.service-card-page img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .service-card-page h3 {
-    font-size: 1.3rem;
-    margin-bottom: 10px;
-    color: var(--primary-color);
+    margin: 0 0 1rem;
+    padding: 1.5rem 1.5rem 0;
+    font-size: 1.5rem;
+    color: #333;
 }
 
 .service-card-page p {
-    color: var(--gray-color);
-    margin-bottom: 15px;
+    margin: 0;
+    padding: 0 1.5rem;
+    color: #666;
+    flex-grow: 1;
 }
 
 .service-card-page .price {
-    font-weight: 700;
-    color: var(--secondary-color);
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+    padding: 1rem 1.5rem 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2c3e50;
 }
 
 .service-card-page .duration {
-    color: var(--gray-color);
+    padding: 0.5rem 1.5rem 0;
+    color: #666;
     font-size: 0.9rem;
+}
+
+.service-card-page .category {
+    padding: 0.5rem 1.5rem;
+    color: #007bff;
+    font-size: 0.9rem;
+}
+
+.service-card-page .btn-primary {
+    display: block;
+    margin: 1.5rem;
+    padding: 0.75rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+}
+
+.service-card-page .btn-primary:hover {
+    background-color: #0056b3;
 }
 
 .service-calculator {

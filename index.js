@@ -164,6 +164,87 @@ app.delete("/api/:table", async (req, res) => {
   }
 });
 
+// Специальные маршруты для услуг
+app.get("/api/services", async (req, res) => {
+  try {
+    console.log("Получен запрос на /api/services");
+    const query = `
+      SELECT 
+        s.service_id,
+        s.service_name,
+        s.description,
+        s.base_price,
+        s.duration_minutes,
+        s.image_url,
+        s.is_active,
+        sc.category_name,
+        sc.category_slug
+      FROM services s
+      LEFT JOIN service_categories sc ON s.category_id = sc.category_id
+      WHERE s.is_active = 1
+      ORDER BY sc.display_order, s.service_name
+    `;
+    console.log("SQL запрос:", query);
+    
+    db.db.all(query, [], (err, services) => {
+      if (err) {
+        console.error("Ошибка при получении услуг:", err);
+        return res.status(500).json({ error: err.message });
+      }
+      
+      console.log("Получены сырые данные из БД:", services);
+      
+      if (!services || services.length === 0) {
+        console.log("Услуги не найдены в базе данных");
+        return res.json([]);
+      }
+      
+      const services_list = services.map(service => {
+        console.log("Обрабатываем услугу из БД:", service);
+        const transformed = {
+          service_id: service.service_id,
+          service_name: service.service_name,
+          description: service.description,
+          base_price: service.base_price,
+          duration_minutes: service.duration_minutes,
+          category_name: service.category_name || 'Без категории',
+          category_slug: service.category_slug || 'uncategorized',
+          image_url: service.image_url || null
+        };
+        console.log("Преобразованная услуга:", transformed);
+        return transformed;
+      });
+      
+      console.log("Отправляем клиенту финальный список:", services_list);
+      res.json(services_list);
+    });
+  } catch (err) {
+    console.error("Ошибка при обработке запроса услуг:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+app.get("/api/services/categories", async (req, res) => {
+  try {
+    const query = `
+      SELECT category_id, category_name, category_slug, description
+      FROM service_categories
+      ORDER BY display_order
+    `;
+    
+    db.db.all(query, [], (err, categories) => {
+      if (err) {
+        console.error("Ошибка при получении категорий:", err);
+        return res.status(500).json({ error: err.message });
+      }
+      res.json(categories);
+    });
+  } catch (err) {
+    console.error("Ошибка при обработке запроса категорий:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

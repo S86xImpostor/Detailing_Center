@@ -4,22 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('services-container');
         if (!container) return;
         
-        if (services.length === 0) {
+        if (!services || services.length === 0) {
             container.innerHTML = '<p class="error">Услуги не найдены</p>';
             return;
         }
         
-        container.innerHTML = services.map(service => `
-            <div class="service-card">
-                <img src="${service.image}" alt="${service.name}">
-                <div class="card-content">
-                    <h3>${service.name}</h3>
-                    <p>${service.description}</p>
-                    <div class="price">${service.price} ₽</div>
-                    <a href="booking.html?service=${service.id}" class="btn-primary">Записаться</a>
+        container.innerHTML = services.map(service => {
+            // Добавляем проверку данных
+            console.log('Отображаем услугу:', service);
+            
+            return `
+                <div class="service-card">
+                    ${service.image_url ? `<img src="${service.image_url}" alt="${service.service_name || 'Услуга'}">` : ''}
+                    <div class="card-content">
+                        <h3>${service.service_name || 'Без названия'}</h3>
+                        <p>${service.description || 'Описание отсутствует'}</p>
+                        <div class="price">${service.base_price || 0} ₽</div>
+                        <div class="duration">Длительность: ${Math.floor((service.duration_minutes || 0) / 60)} ч.</div>
+                        <a href="booking.html?service=${service.service_id}" class="btn-primary">Записаться</a>
+                    </div>
                 </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     };
 
     // Инициализация модулей
@@ -32,38 +38,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 try {
                     container.innerHTML = '<div class="loading-animation"></div>';
                     
-                    const category = document.getElementById('category-filter').value;
-                    const minPrice = document.getElementById('price-min').value;
-                    const maxPrice = document.getElementById('price-max').value;
+                    const category = document.getElementById('category-filter')?.value || '';
+                    const minPrice = parseInt(document.getElementById('price-min')?.value) || 0;
+                    const maxPrice = parseInt(document.getElementById('price-max')?.value) || Infinity;
                     
-                    // Заглушка для демонстрации (в реальном проекте заменить на реальный API-запрос)
-                    const mockServices = [
-                        {
-                            id: 1,
-                            name: "Комплексная мойка",
-                            description: "Полная очистка кузова и салона",
-                            price: 3000,
-                            image: "images/Moika_BMW.jpg",
-                            category: "wash"
-                        },
-                        {
-                            id: 2,
-                            name: "Полировка кузова",
-                            description: "Удаление царапин и восстановление блеска",
-                            price: 5000,
-                            image: "images/Polirovka_BMW.jpg",
-                            category: "polish"
-                        }
-                    ].filter(service => 
-                        (category === "" || service.category === category) &&
-                        service.price >= minPrice && 
-                        service.price <= maxPrice
-                    );
-
-                    // Имитация задержки сети
-                    await new Promise(resolve => setTimeout(resolve, 500));
+                    // Получаем данные из глобальной переменной servicesData
+                    if (!window.servicesData || window.servicesData.length === 0) {
+                        throw new Error('Данные услуг не загружены');
+                    }
                     
-                    renderServices(mockServices);
+                    // Применяем фильтры
+                    const filteredServices = window.servicesData.filter(service => {
+                        console.log('Проверяем услугу:', service);
+                        return (category === "" || service.category_slug === category) &&
+                               service.base_price >= minPrice && 
+                               service.base_price <= maxPrice;
+                    });
+                    
+                    console.log('Отфильтрованные услуги:', filteredServices);
+                    renderServices(filteredServices);
                     
                 } catch (error) {
                     console.error('Ошибка фильтра:', error);
@@ -73,19 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Обновление значений диапазона цен
             const updatePriceValues = () => {
-                document.getElementById('min-value').textContent = `${document.getElementById('price-min').value} ₽`;
-                document.getElementById('max-value').textContent = `${document.getElementById('price-max').value} ₽`;
+                document.getElementById('min-value').textContent = `${document.getElementById('price-min')?.value || 0} ₽`;
+                document.getElementById('max-value').textContent = `${document.getElementById('price-max')?.value || 10000} ₽`;
             };
 
             // Инициализация обработчиков событий
-            document.getElementById('apply-filters').addEventListener('click', applyFilters);
-            document.getElementById('category-filter').addEventListener('change', applyFilters);
-            document.getElementById('price-min').addEventListener('input', updatePriceValues);
-            document.getElementById('price-max').addEventListener('input', updatePriceValues);
+            document.getElementById('apply-filters')?.addEventListener('click', applyFilters);
+            document.getElementById('category-filter')?.addEventListener('change', applyFilters);
+            document.getElementById('price-min')?.addEventListener('input', updatePriceValues);
+            document.getElementById('price-max')?.addEventListener('input', updatePriceValues);
             
             // Первоначальная загрузка
-            updatePriceValues();
-            applyFilters();
+            if (document.getElementById('services-container')) {
+                updatePriceValues();
+                applyFilters();
+            }
         },
         
         bookingSystem: () => {

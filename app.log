@@ -482,3 +482,327 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-05-31 20:04:16,418 - INFO - Запуск Flask приложения
 2025-05-31 20:04:16,456 - WARNING -  * Debugger is active!
 2025-05-31 20:04:16,462 - INFO -  * Debugger PIN: 450-507-256
+2025-05-31 20:30:07,686 - INFO - Запуск Flask приложения
+2025-05-31 20:30:07,739 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-31 20:30:07,739 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-31 20:30:07,741 - INFO -  * Restarting with stat
+2025-05-31 20:30:08,148 - INFO - Запуск Flask приложения
+2025-05-31 20:30:08,181 - WARNING -  * Debugger is active!
+2025-05-31 20:30:08,186 - INFO -  * Debugger PIN: 450-507-256
+2025-05-31 20:31:11,927 - INFO - 127.0.0.1 - - [31/May/2025 20:31:11] "GET / HTTP/1.1" 200 -
+2025-05-31 20:31:11,951 - INFO - 127.0.0.1 - - [31/May/2025 20:31:11] "GET /css/style.css HTTP/1.1" 200 -
+2025-05-31 20:31:11,960 - INFO - 127.0.0.1 - - [31/May/2025 20:31:11] "GET /css/mobile.css HTTP/1.1" 200 -
+2025-05-31 20:31:11,961 - INFO - 127.0.0.1 - - [31/May/2025 20:31:11] "GET /js/feedback.js HTTP/1.1" 200 -
+2025-05-31 20:31:12,033 - DEBUG - Запрос на получение списка отзывов
+2025-05-31 20:31:12,034 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-05-31 20:31:12,037 - DEBUG - Найдено отзывов: 3
+2025-05-31 20:31:12,038 - ERROR - Ошибка при получении отзывов: _feedback_list.html
+2025-05-31 20:31:12,044 - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\denis\Desktop\Detailing_Center-1\app.py", line 138, in get_feedbacks
+    return render_template('_feedback_list.html', feedbacks=feedbacks)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _feedback_list.html
+
+2025-05-31 20:31:12,051 - INFO - 127.0.0.1 - - [31/May/2025 20:31:12] "[35m[1mGET /api/feedback HTTP/1.1[0m" 500 -
+2025-05-31 20:31:21,530 - INFO - 127.0.0.1 - - [31/May/2025 20:31:21] "[33mPOST /api/customers HTTP/1.1[0m" 404 -
+2025-05-31 20:42:04,006 - INFO - Запуск Flask приложения
+2025-05-31 20:42:04,056 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-31 20:42:04,057 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-31 20:42:04,059 - INFO -  * Restarting with stat
+2025-05-31 20:42:04,491 - INFO - Запуск Flask приложения
+2025-05-31 20:42:04,522 - WARNING -  * Debugger is active!
+2025-05-31 20:42:04,528 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:17:59,640 - INFO - Запуск Flask приложения
+2025-06-02 14:17:59,770 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 14:17:59,771 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 14:17:59,775 - INFO -  * Restarting with stat
+2025-06-02 14:18:00,187 - INFO - Запуск Flask приложения
+2025-06-02 14:18:00,215 - WARNING -  * Debugger is active!
+2025-06-02 14:18:00,221 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:28:21,965 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:28:22,016 - INFO -  * Restarting with stat
+2025-06-02 14:28:22,462 - INFO - Запуск Flask приложения
+2025-06-02 14:28:22,494 - WARNING -  * Debugger is active!
+2025-06-02 14:28:22,499 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:31:14,645 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:31:14,710 - INFO -  * Restarting with stat
+2025-06-02 14:31:15,127 - INFO - Запуск Flask приложения
+2025-06-02 14:31:15,160 - WARNING -  * Debugger is active!
+2025-06-02 14:31:15,166 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:36:24,408 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\check_services.py', reloading
+2025-06-02 14:36:24,478 - INFO -  * Restarting with stat
+2025-06-02 14:36:24,907 - INFO - Запуск Flask приложения
+2025-06-02 14:36:24,943 - WARNING -  * Debugger is active!
+2025-06-02 14:36:24,951 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:37:06,281 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\init_services_data.py', reloading
+2025-06-02 14:37:06,346 - INFO -  * Restarting with stat
+2025-06-02 14:37:06,825 - INFO - Запуск Flask приложения
+2025-06-02 14:37:06,857 - WARNING -  * Debugger is active!
+2025-06-02 14:37:06,862 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:39:06,629 - INFO - Запуск Flask приложения
+2025-06-02 14:39:06,679 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 14:39:06,680 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 14:39:06,682 - INFO -  * Restarting with stat
+2025-06-02 14:39:07,095 - INFO - Запуск Flask приложения
+2025-06-02 14:39:07,127 - WARNING -  * Debugger is active!
+2025-06-02 14:39:07,133 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:41:16,078 - INFO - Запуск Flask приложения
+2025-06-02 14:41:16,136 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 14:41:16,137 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 14:41:16,139 - INFO -  * Restarting with stat
+2025-06-02 14:41:16,623 - INFO - Запуск Flask приложения
+2025-06-02 14:41:16,660 - WARNING -  * Debugger is active!
+2025-06-02 14:41:16,665 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:41:24,516 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:24] "GET / HTTP/1.1" 200 -
+2025-06-02 14:41:24,551 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:24] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:41:24,564 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:24] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:41:24,565 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:24] "GET /js/feedback.js HTTP/1.1" 200 -
+2025-06-02 14:41:25,366 - DEBUG - Запрос на получение списка отзывов
+2025-06-02 14:41:25,366 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:41:25,368 - DEBUG - Найдено отзывов: 5
+2025-06-02 14:41:25,369 - ERROR - Ошибка при получении отзывов: _feedback_list.html
+2025-06-02 14:41:25,428 - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\denis\Desktop\Detailing_Center-1\app.py", line 138, in get_feedbacks
+    return render_template('_feedback_list.html', feedbacks=feedbacks)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _feedback_list.html
+
+2025-06-02 14:41:25,434 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:25] "[35m[1mGET /api/feedback HTTP/1.1[0m" 500 -
+2025-06-02 14:41:26,416 - INFO - 127.0.0.1 - - [02/Jun/2025 14:41:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-02 14:42:03,321 - INFO - 127.0.0.1 - - [02/Jun/2025 14:42:03] "[33mGET /services.html HTTP/1.1[0m" 404 -
+2025-06-02 14:42:45,406 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:42:45,454 - INFO -  * Restarting with stat
+2025-06-02 14:42:45,895 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:42:45,932 - INFO - Запуск Flask приложения
+2025-06-02 14:42:45,965 - WARNING -  * Debugger is active!
+2025-06-02 14:42:45,970 - INFO -  * Restarting with stat
+2025-06-02 14:42:45,972 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:42:46,409 - INFO - Запуск Flask приложения
+2025-06-02 14:42:46,441 - WARNING -  * Debugger is active!
+2025-06-02 14:42:46,446 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:42:59,467 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:42:59,534 - INFO -  * Restarting with stat
+2025-06-02 14:42:59,938 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-1\\app.py', reloading
+2025-06-02 14:42:59,984 - INFO - Запуск Flask приложения
+2025-06-02 14:43:00,005 - INFO -  * Restarting with stat
+2025-06-02 14:43:00,026 - WARNING -  * Debugger is active!
+2025-06-02 14:43:00,032 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:43:00,456 - INFO - Запуск Flask приложения
+2025-06-02 14:43:00,487 - WARNING -  * Debugger is active!
+2025-06-02 14:43:00,492 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:43:34,000 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /services.html HTTP/1.1" 200 -
+2025-06-02 14:43:34,031 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:34,048 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /js/main.js HTTP/1.1" 200 -
+2025-06-02 14:43:34,061 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /js/services.js HTTP/1.1" 200 -
+2025-06-02 14:43:34,063 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /images/logo.png HTTP/1.1" 200 -
+2025-06-02 14:43:34,063 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /js/calculator.js HTTP/1.1" 200 -
+2025-06-02 14:43:34,064 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:34,076 - DEBUG - Запрос на получение списка услуг
+2025-06-02 14:43:34,077 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:43:34,079 - DEBUG - Найдено услуг: 12
+2025-06-02 14:43:34,080 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /api/services HTTP/1.1" 200 -
+2025-06-02 14:43:34,124 - DEBUG - Запрос на получение категорий услуг
+2025-06-02 14:43:34,124 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:43:34,127 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:34] "GET /api/services/categories HTTP/1.1" 200 -
+2025-06-02 14:43:36,647 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "GET /index.html HTTP/1.1" 200 -
+2025-06-02 14:43:36,683 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:36,697 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "[33mGET /js/database.js HTTP/1.1[0m" 404 -
+2025-06-02 14:43:36,699 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "[36mGET /images/logo.png HTTP/1.1[0m" 304 -
+2025-06-02 14:43:36,704 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "[36mGET /js/main.js HTTP/1.1[0m" 304 -
+2025-06-02 14:43:36,710 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:36,711 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "GET /images/Ximchistka.jpg HTTP/1.1" 200 -
+2025-06-02 14:43:36,711 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "GET /images/Moika_BMW.jpg HTTP/1.1" 200 -
+2025-06-02 14:43:36,712 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "GET /images/Polirovka_BMW.jpg HTTP/1.1" 200 -
+2025-06-02 14:43:36,818 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:36] "GET /images/heroes/Shapka.jpg HTTP/1.1" 200 -
+2025-06-02 14:43:37,985 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:37] "[36mGET /services.html HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,015 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,031 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /js/main.js HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,034 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /js/services.js HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,034 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /images/logo.png HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,035 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /js/calculator.js HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,036 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:43:38,056 - DEBUG - Запрос на получение списка услуг
+2025-06-02 14:43:38,057 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:43:38,059 - DEBUG - Найдено услуг: 12
+2025-06-02 14:43:38,061 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "GET /api/services HTTP/1.1" 200 -
+2025-06-02 14:43:38,081 - DEBUG - Запрос на получение категорий услуг
+2025-06-02 14:43:38,081 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:43:38,084 - INFO - 127.0.0.1 - - [02/Jun/2025 14:43:38] "GET /api/services/categories HTTP/1.1" 200 -
+2025-06-02 14:44:07,295 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "GET /booking.html?service=2 HTTP/1.1" 200 -
+2025-06-02 14:44:07,334 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:07,353 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "[33mGET /js/database.js HTTP/1.1[0m" 404 -
+2025-06-02 14:44:07,353 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "GET /js/booking.js HTTP/1.1" 200 -
+2025-06-02 14:44:07,354 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "[36mGET /images/logo.png HTTP/1.1[0m" 304 -
+2025-06-02 14:44:07,358 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:07] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:19,680 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:19] "GET /feedback.html HTTP/1.1" 200 -
+2025-06-02 14:44:19,710 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:19] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:19,725 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:19] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:19,725 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:19] "[36mGET /js/feedback.js HTTP/1.1[0m" 304 -
+2025-06-02 14:44:19,734 - DEBUG - Запрос на получение списка отзывов
+2025-06-02 14:44:19,735 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:44:19,737 - DEBUG - Найдено отзывов: 5
+2025-06-02 14:44:19,737 - ERROR - Ошибка при получении отзывов: _feedback_list.html
+2025-06-02 14:44:19,741 - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\denis\Desktop\Detailing_Center-1\app.py", line 144, in get_feedbacks
+    return render_template('_feedback_list.html', feedbacks=feedbacks)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _feedback_list.html
+
+2025-06-02 14:44:19,746 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:19] "[35m[1mGET /api/feedback HTTP/1.1[0m" 500 -
+2025-06-02 14:44:23,950 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:23] "[36mGET /services.html HTTP/1.1[0m" 304 -
+2025-06-02 14:44:23,984 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:23] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:23,994 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:23] "[36mGET /images/logo.png HTTP/1.1[0m" 304 -
+2025-06-02 14:44:23,996 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:23] "[36mGET /js/main.js HTTP/1.1[0m" 304 -
+2025-06-02 14:44:23,998 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:23] "[36mGET /js/services.js HTTP/1.1[0m" 304 -
+2025-06-02 14:44:24,002 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:24] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:24,002 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:24] "[36mGET /js/calculator.js HTTP/1.1[0m" 304 -
+2025-06-02 14:44:24,010 - DEBUG - Запрос на получение списка услуг
+2025-06-02 14:44:24,011 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:44:24,012 - DEBUG - Найдено услуг: 12
+2025-06-02 14:44:24,013 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:24] "GET /api/services HTTP/1.1" 200 -
+2025-06-02 14:44:24,039 - DEBUG - Запрос на получение категорий услуг
+2025-06-02 14:44:24,039 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:44:24,043 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:24] "GET /api/services/categories HTTP/1.1" 200 -
+2025-06-02 14:44:37,739 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "GET /booking.html?service=6 HTTP/1.1" 200 -
+2025-06-02 14:44:37,776 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:44:37,786 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "[36mGET /images/logo.png HTTP/1.1[0m" 304 -
+2025-06-02 14:44:37,789 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "[33mGET /js/database.js HTTP/1.1[0m" 404 -
+2025-06-02 14:44:37,789 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "[36mGET /js/booking.js HTTP/1.1[0m" 304 -
+2025-06-02 14:44:37,792 - INFO - 127.0.0.1 - - [02/Jun/2025 14:44:37] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:45:16,240 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:16] "[36mGET /feedback.html HTTP/1.1[0m" 304 -
+2025-06-02 14:45:16,275 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:16] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-02 14:45:16,294 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:16] "[36mGET /css/mobile.css HTTP/1.1[0m" 304 -
+2025-06-02 14:45:16,295 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:16] "[36mGET /js/feedback.js HTTP/1.1[0m" 304 -
+2025-06-02 14:45:16,305 - DEBUG - Запрос на получение списка отзывов
+2025-06-02 14:45:16,306 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-1\database.sqlite
+2025-06-02 14:45:16,308 - DEBUG - Найдено отзывов: 5
+2025-06-02 14:45:16,309 - ERROR - Ошибка при получении отзывов: _feedback_list.html
+2025-06-02 14:45:16,313 - ERROR - Traceback: Traceback (most recent call last):
+  File "C:\Users\denis\Desktop\Detailing_Center-1\app.py", line 144, in get_feedbacks
+    return render_template('_feedback_list.html', feedbacks=feedbacks)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 151, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\jinja2\loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\denis\AppData\Local\Programs\Python\Python313\Lib\site-packages\flask\templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _feedback_list.html
+
+2025-06-02 14:45:16,318 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:16] "[35m[1mGET /api/feedback HTTP/1.1[0m" 500 -
+2025-06-02 14:45:23,918 - INFO - 127.0.0.1 - - [02/Jun/2025 14:45:23] "[31m[1mPOST /api/customers HTTP/1.1[0m" 405 -
+2025-06-02 14:46:03,823 - INFO - Запуск Flask приложения
+2025-06-02 14:46:03,876 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 14:46:03,877 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 14:46:03,878 - INFO -  * Restarting with stat
+2025-06-02 14:46:04,288 - INFO - Запуск Flask приложения
+2025-06-02 14:46:04,321 - WARNING -  * Debugger is active!
+2025-06-02 14:46:04,327 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 14:52:44,071 - INFO - Запуск Flask приложения
+2025-06-02 14:52:44,125 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 14:52:44,126 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 14:52:44,128 - INFO -  * Restarting with stat
+2025-06-02 14:52:44,538 - INFO - Запуск Flask приложения
+2025-06-02 14:52:44,571 - WARNING -  * Debugger is active!
+2025-06-02 14:52:44,577 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 15:02:08,093 - INFO - Запуск Flask приложения
+2025-06-02 15:02:08,146 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 15:02:08,147 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 15:02:08,148 - INFO -  * Restarting with stat
+2025-06-02 15:02:08,563 - INFO - Запуск Flask приложения
+2025-06-02 15:02:08,595 - WARNING -  * Debugger is active!
+2025-06-02 15:02:08,601 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 15:10:27,530 - INFO - Запуск Flask приложения
+2025-06-02 15:10:27,587 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 15:10:27,588 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 15:10:27,590 - INFO -  * Restarting with stat
+2025-06-02 15:10:27,996 - INFO - Запуск Flask приложения
+2025-06-02 15:10:28,028 - WARNING -  * Debugger is active!
+2025-06-02 15:10:28,036 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 15:22:12,819 - INFO - Запуск Flask приложения
+2025-06-02 15:22:12,873 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 15:22:12,874 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 15:22:12,876 - INFO -  * Restarting with stat
+2025-06-02 15:22:13,426 - INFO - Запуск Flask приложения
+2025-06-02 15:22:13,465 - WARNING -  * Debugger is active!
+2025-06-02 15:22:13,474 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 15:29:57,691 - INFO - Запуск Flask приложения
+2025-06-02 15:29:57,748 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 15:29:57,749 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 15:29:57,751 - INFO -  * Restarting with stat
+2025-06-02 15:29:58,168 - INFO - Запуск Flask приложения
+2025-06-02 15:29:58,201 - WARNING -  * Debugger is active!
+2025-06-02 15:29:58,207 - INFO -  * Debugger PIN: 450-507-256
