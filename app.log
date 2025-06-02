@@ -806,3 +806,27 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-02 15:29:58,168 - INFO - Запуск Flask приложения
 2025-06-02 15:29:58,201 - WARNING -  * Debugger is active!
 2025-06-02 15:29:58,207 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 17:22:24,064 - INFO - Запуск Flask приложения
+2025-06-02 17:22:24,156 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 17:22:24,156 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 17:22:24,158 - INFO -  * Restarting with stat
+2025-06-02 17:22:24,579 - INFO - Запуск Flask приложения
+2025-06-02 17:22:24,610 - WARNING -  * Debugger is active!
+2025-06-02 17:22:24,615 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 17:33:17,207 - INFO - Запуск Flask приложения
+2025-06-02 17:33:17,259 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 17:33:17,260 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 17:33:17,262 - INFO -  * Restarting with stat
+2025-06-02 17:33:17,684 - INFO - Запуск Flask приложения
+2025-06-02 17:33:17,715 - WARNING -  * Debugger is active!
+2025-06-02 17:33:17,721 - INFO -  * Debugger PIN: 450-507-256
+2025-06-02 17:41:44,653 - INFO - Запуск Flask приложения
+2025-06-02 17:41:44,706 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-02 17:41:44,706 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-02 17:41:44,708 - INFO -  * Restarting with stat
+2025-06-02 17:41:45,119 - INFO - Запуск Flask приложения
+2025-06-02 17:41:45,150 - WARNING -  * Debugger is active!
+2025-06-02 17:41:45,156 - INFO -  * Debugger PIN: 450-507-256

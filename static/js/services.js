@@ -97,7 +97,7 @@ function displayServices(services) {
             <p>${service.description || 'Описание отсутствует'}</p>
             <div class="price">${service.base_price || 0} руб.</div>
             <div class="duration">Длительность: ${Math.floor((service.duration_minutes || 0) / 60)} ч.</div>
-            <a href="booking.html?service=${service.service_id}" class="btn-primary">Записаться</a>
+            <a href="booking.html?service=${service.id}&autostart=true" class="btn-primary">Записаться</a>
         `;
         container.appendChild(card);
     });
@@ -224,7 +224,10 @@ function calculatePrice() {
         resultDetails.innerHTML = details;
     }
     
-    if (bookNowBtn) bookNowBtn.style.display = 'inline-block';
+    if (bookNowBtn) {
+        bookNowBtn.style.display = 'inline-block';
+        bookNowBtn.href = `booking.html?service=${serviceId}&premium=${premium}&express=${express}&carSize=${carSize}&autostart=true`;
+    }
 }
 
 // Вспомогательная функция для получения названия размера автомобиля

@@ -11,6 +11,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedService = null;
     let selectedDateTime = null;
     
+    // Получаем параметры из URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const autoStartService = urlParams.get('service');
+    const autoStart = urlParams.get('autostart') === 'true';
+    const premium = urlParams.get('premium') === 'true';
+    const express = urlParams.get('express') === 'true';
+    const carSize = urlParams.get('carSize');
+    
     // Инициализация datepicker
     const fp = flatpickr(bookingDateInput, {
         locale: 'ru',
@@ -25,7 +33,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Загрузка услуг
-    loadServicesForBooking();
+    loadServicesForBooking().then(() => {
+        // Если есть параметр service в URL и autostart=true
+        if (autoStartService && autoStart) {
+            const serviceInput = document.getElementById(`service-${autoStartService}`);
+            if (serviceInput) {
+                serviceInput.checked = true;
+                serviceInput.dispatchEvent(new Event('change'));
+                // Переходим к выбору даты
+                setTimeout(() => {
+                    if (validateStep(1)) {
+                        goToStep(2);
+                    }
+                }, 100);
+            }
+        }
+    });
     
     // Переключение шагов
     function goToStep(step) {
@@ -139,28 +162,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Загрузка услуг для бронирования
     async function loadServicesForBooking() {
         try {
-            // В реальном проекте замените на реальный API-запрос
-            const mockServices = [
-                {
-                    id: 1,
-                    name: "Комплексная мойка",
-                    description: "Полная очистка кузова и салона",
-                    base_price: 3000
-                },
-                {
-                    id: 2,
-                    name: "Полировка кузова",
-                    description: "Удаление царапин и восстановление блеска",
-                    base_price: 5000
-                }
-            ];
+            const response = await fetch('/api/services');
+            if (!response.ok) {
+                throw new Error('Не удалось загрузить услуги');
+            }
+            const services = await response.json();
             
-            displayServices(mockServices);
-            
-            // Разблокируем кнопку "Далее" после загрузки
+            if (!Array.isArray(services) || services.length === 0) {
+                throw new Error('Нет доступных услуг');
+            }
+
+            displayServices(services);
             document.querySelector('.next-step').disabled = false;
         } catch (error) {
-            console.error('Ошибка:', error);
+            console.error('Ошибка загрузки услуг:', error);
             document.getElementById('booking-services').innerHTML = 
                 '<p class="error">Не удалось загрузить услуги. Пожалуйста, попробуйте позже.</p>';
         }
@@ -170,25 +185,94 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayServices(services) {
         const container = document.getElementById('booking-services');
         container.innerHTML = '';
-        
+
+        // Удаляем существующее модальное окно
+        const existingModal = document.getElementById('service-confirmation');
+        if (existingModal) {
+            existingModal.remove();
+        }
+
+        // Создаем новое модальное окно
+        const modal = document.createElement('div');
+        modal.className = 'confirmation-modal';
+        modal.id = 'service-confirmation';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h3>Подтверждение выбора</h3>
+                <div id="modal-service-details"></div>
+                <div class="modal-buttons">
+                    <button class="btn-primary" id="confirm-service">Продолжить</button>
+                    <button class="btn-outline" id="cancel-service">Отменить</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        // Создаем карточки услуг
         services.forEach(service => {
-            const serviceElement = document.createElement('div');
-            serviceElement.className = 'service-card';
-            serviceElement.innerHTML = `
-                <input type="radio" name="service" id="service-${service.id}" 
-                       value="${service.id}" required>
-                <label for="service-${service.id}">
-                    <h3>${service.name}</h3>
-                    <p>${service.description}</p>
-                    <div class="price">${service.base_price} руб.</div>
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            
+            const serviceName = service.service_name || service.name;
+            const serviceDescription = service.description || 'Описание отсутствует';
+            const servicePrice = service.base_price;
+            const serviceId = service.service_id || service.id;
+
+            card.innerHTML = `
+                <input type="radio" name="service" id="service-${serviceId}" value="${serviceId}">
+                <label for="service-${serviceId}">
+                    <h3>${serviceName}</h3>
+                    <p>${serviceDescription}</p>
+                    <div class="price">${servicePrice} руб.</div>
                 </label>
             `;
-            container.appendChild(serviceElement);
-            
-            // Добавляем обработчик выбора услуги
-            document.getElementById(`service-${service.id}`).addEventListener('change', () => {
-                selectedService = service;
+            container.appendChild(card);
+
+            // Добавляем обработчик для радио-кнопки
+            const radio = card.querySelector('input[type="radio"]');
+            radio.addEventListener('change', () => {
+                if (radio.checked) {
+                    const modalDetails = document.getElementById('modal-service-details');
+                    modalDetails.innerHTML = `
+                        <p>Вы выбрали услугу: ${serviceName}</p>
+                        <p>Стоимость: ${servicePrice} руб.</p>
+                    `;
+                    modal.style.display = 'flex';
+
+                    // Обработчик подтверждения
+                    const confirmBtn = document.getElementById('confirm-service');
+                    confirmBtn.onclick = () => {
+                        selectedService = {
+                            id: serviceId,
+                            name: serviceName,
+                            description: serviceDescription,
+                            base_price: servicePrice
+                        };
+                        modal.style.display = 'none';
+                        if (validateStep(1)) {
+                            goToStep(2);
+                        }
+                    };
+
+                    // Обработчик отмены
+                    const cancelBtn = document.getElementById('cancel-service');
+                    cancelBtn.onclick = () => {
+                        radio.checked = false;
+                        modal.style.display = 'none';
+                    };
+                }
             });
+        });
+
+        // Закрытие модального окна при клике вне его
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                const checkedRadio = document.querySelector('input[name="service"]:checked');
+                if (checkedRadio) {
+                    checkedRadio.checked = false;
+                }
+                modal.style.display = 'none';
+            }
         });
     }
     
