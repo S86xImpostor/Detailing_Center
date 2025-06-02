@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', function() {
     loadServicesForBooking().then(() => {
         // Если есть параметр service в URL и autostart=true
         if (autoStartService && autoStart) {
-            const serviceInput = document.getElementById(`service-${autoStartService}`);
+            console.log('Автоматический выбор услуги:', autoStartService);
+            const serviceInput = document.querySelector(`input[name="service"][value="${autoStartService}"]`);
             if (serviceInput) {
                 serviceInput.checked = true;
                 serviceInput.dispatchEvent(new Event('change'));
@@ -46,6 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         goToStep(2);
                     }
                 }, 100);
+            } else {
+                console.error('Услуга не найдена:', autoStartService);
             }
         }
     });
