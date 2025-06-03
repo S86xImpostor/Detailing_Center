@@ -347,13 +347,40 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateStep(4)) return;
         
         try {
-            // Имитация отправки данных
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            
-            // В реальном проекте замените на реальный API-запрос
-            const mockResponse = {
-                booking_id: 'BK-' + Math.floor(Math.random() * 10000)
+            // Сначала создаем или получаем клиента
+            const customerData = {
+                name: document.getElementById('client-name').value.trim(),
+                phone: document.getElementById('client-phone').value.trim(),
+                email: document.getElementById('client-email').value.trim() || null,
+                car: document.getElementById('client-car').value.trim()
             };
+
+            const bookingData = {
+                service_id: parseInt(selectedService.id),
+                client_name: customerData.name,
+                client_phone: customerData.phone,
+                client_email: customerData.email,
+                client_car: customerData.car,
+                booking_date: selectedDateTime.date,
+                start_time: selectedDateTime.start,
+                end_time: selectedDateTime.end,
+                notes: document.getElementById('client-notes').value.trim() || null
+            };
+
+            const response = await fetch('/api/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'Ошибка при создании записи');
+            }
+
+            const result = await response.json();
             
             // Показываем сообщение об успехе
             bookingForm.hidden = true;
@@ -361,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('success-details').innerHTML = `
                 <p><strong>Услуга:</strong> ${selectedService.name}</p>
                 <p><strong>Дата:</strong> ${selectedDateTime.date} ${selectedDateTime.start}</p>
-                <p><strong>Номер записи:</strong> ${mockResponse.booking_id}</p>
+                <p><strong>Номер записи:</strong> ${result.booking_id}</p>
             `;
         } catch (error) {
             console.error('Ошибка:', error);

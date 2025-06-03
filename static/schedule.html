@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Расписание | Детейлинг центр</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css">
+    <link rel="stylesheet" href="css/mobile.css" media="(max-width: 768px)">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
 </head>
 <body>
     <header class="main-header">
@@ -14,13 +15,13 @@
                 <img src="images/logo.png" alt="Детейлинг Центр">
                 <span>Детейлинг Центр</span>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Открыть меню">☰</button>
-            <nav class="main-nav" id="mainNav" aria-label="Основное меню">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="index.html">Главная</a></li>
                     <li><a href="services.html">Услуги</a></li>
                     <li><a href="gallery.html">Галерея</a></li>
-                    <li><a href="schedule.html" class="active" aria-current="page">Расписание</a></li>
+                    <li><a href="schedule.html" class="active">Расписание</a></li>
                     <li><a href="booking.html">Онлайн запись</a></li>
                     <li><a href="feedback.html">Отзывы</a></li>
                 </ul>
@@ -31,37 +32,53 @@
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>Расписание</h1>
-                <nav class="breadcrumbs" aria-label="Навигационная цепочка">
-                    <a href="index.html">Главная</a> / <span aria-current="page">Расписание</span>
+                <h1>Расписание работы</h1>
+                <nav class="breadcrumbs" aria-label="Навигация">
+                    <a href="index.html">Главная</a> / <span>Расписание</span>
                 </nav>
             </div>
         </section>
 
-        <section class="schedule-section" aria-labelledby="calendar-heading">
+        <section class="schedule-section">
             <div class="container">
-                <h2 id="calendar-heading" class="visually-hidden">Календарь записей</h2>
-                <div id="calendar" role="application" aria-label="Интерактивный календарь"></div>
+                <div class="schedule-controls">
+                    <div class="date-picker-wrapper">
+                        <label for="schedule-date">Выберите дату:</label>
+                        <input type="text" id="schedule-date" class="datepicker" readonly>
+                    </div>
+                    <div class="view-controls">
+                        <button class="btn-outline active" data-view="day">День</button>
+                        <button class="btn-outline" data-view="week">Неделя</button>
+                    </div>
+                </div>
 
-                <div class="schedule-legend" role="group" aria-labelledby="legend-heading">
-                    <h3 id="legend-heading" class="visually-hidden">Обозначения в календаре</h3>
+                <div class="schedule-grid">
+                    <div class="time-column">
+                        <div class="time-header">Время</div>
+                        <!-- Временные слоты будут добавлены через JavaScript -->
+                    </div>
+                    <div class="bookings-column">
+                        <div class="bookings-header">Записи</div>
+                        <div id="bookings-container">
+                            <!-- Записи будут добавлены через JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-legend">
                     <div class="legend-item">
-                        <span class="legend-color available" aria-hidden="true"></span>
-                        <span>Доступное время</span>
+                        <span class="legend-color available"></span>
+                        <span>Доступно для записи</span>
                     </div>
                     <div class="legend-item">
-                        <span class="legend-color booked" aria-hidden="true"></span>
-                        <span>Забронировано</span>
-                    </div>
-                    <div class="legend-item">
-                        <span class="legend-color unavailable" aria-hidden="true"></span>
-                        <span>Недоступно</span>
+                        <span class="legend-color booked"></span>
+                        <span>Занято</span>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-    
+
     <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-section">
@@ -89,15 +106,9 @@
             <p>© 2023 Детейлинг Центр. Все права защищены.</p>
         </div>
     </footer>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/locales/ru.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/l10n/ru.js"></script>
     <script src="js/schedule.js"></script>
-    <script>
-        // Мобильное меню
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

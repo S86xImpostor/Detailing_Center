@@ -117,6 +117,15 @@ app.get('/', (req, res) => {
 // Initialize database
 const db = new Database("database.sqlite");
 
+// Проверка структуры базы данных
+db.db.all("SELECT sql FROM sqlite_master WHERE type='table' AND name='bookings'", [], (err, rows) => {
+    if (err) {
+        console.error('Ошибка при проверке структуры таблицы:', err);
+    } else {
+        console.log('Структура таблицы bookings:', rows);
+    }
+});
+
 // Initialize database from dump file
 db.initFromDump("dump.sql")
   .then(() => {
@@ -243,6 +252,94 @@ app.get("/api/services/categories", async (req, res) => {
     console.error("Ошибка при обработке запроса категорий:", err);
     res.status(500).json({ error: err.message });
   }
+});
+
+// Маршрут для создания новой записи
+app.post("/api/bookings", async (req, res) => {
+    try {
+        console.log('Получены данные для бронирования:', req.body);
+        
+        const { 
+            service_id, 
+            client_name, 
+            client_phone, 
+            client_email, 
+            client_car,
+            booking_date,
+            start_time,
+            end_time,
+            notes
+        } = req.body;
+
+        // Проверяем обязательные поля
+        if (!service_id || !client_name || !client_phone || !booking_date || !start_time || !end_time) {
+            console.log('Отсутствуют обязательные поля:', {
+                service_id, client_name, client_phone, booking_date, start_time, end_time
+            });
+            return res.status(400).json({ error: 'Не все обязательные поля заполнены' });
+        }
+
+        try {
+            // Создаем или получаем клиента
+            let customerId;
+            const customers = await db.read('customers', { phone: client_phone });
+            console.log('Найденные клиенты:', customers);
+            
+            if (customers && customers.length > 0) {
+                customerId = customers[0].customer_id;
+                console.log('Найден существующий клиент:', customerId);
+                // Обновляем информацию о клиенте
+                await db.update('customers', 
+                    { 
+                        name: client_name, 
+                        email: client_email || null,
+                        last_visit: new Date().toISOString()
+                    }, 
+                    { customer_id: customerId }
+                );
+            } else {
+                // Создаем нового клиента
+                const customerData = {
+                    name: client_name,
+                    phone: client_phone,
+                    email: client_email || null,
+                    registration_date: new Date().toISOString()
+                };
+                console.log('Создаем нового клиента:', customerData);
+                customerId = await db.create('customers', customerData);
+                console.log('Создан новый клиент:', customerId);
+            }
+
+            // Создаем запись в соответствии со структурой таблицы bookings
+            const bookingData = {
+                customer_id: customerId,
+                service_id: service_id,
+                booking_date: booking_date,
+                start_time: start_time,
+                end_time: end_time,
+                status: 'pending',
+                notes: notes || null,
+                created_at: new Date().toISOString()
+            };
+            console.log('Создаем бронирование:', bookingData);
+
+            const bookingId = await db.create('bookings', bookingData);
+            console.log('Создано бронирование:', bookingId);
+
+            // Возвращаем ID новой записи
+            res.json({ 
+                booking_id: bookingId,
+                message: 'Запись успешно создана'
+            });
+
+        } catch (error) {
+            console.error('Внутренняя ошибка при создании записи:', error);
+            throw error;
+        }
+    } catch (error) {
+        console.error('Ошибка при создании записи:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
 
 // Start server
