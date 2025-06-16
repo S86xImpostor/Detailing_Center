@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const premium = urlParams.get('premium') === 'true';
     const express = urlParams.get('express') === 'true';
     const carSize = urlParams.get('carSize');
+    const totalPriceFromUrl = urlParams.get('totalPrice');
     
     // Инициализация datepicker
     const fp = flatpickr(bookingDateInput, {
@@ -236,9 +237,10 @@ document.addEventListener('DOMContentLoaded', function() {
             radio.addEventListener('change', () => {
                 if (radio.checked) {
                     const modalDetails = document.getElementById('modal-service-details');
+                    const priceToDisplayInModal = totalPriceFromUrl ? `${totalPriceFromUrl} руб.` : `${servicePrice} руб.`;
                     modalDetails.innerHTML = `
                         <p>Вы выбрали услугу: ${serviceName}</p>
-                        <p>Стоимость: ${servicePrice} руб.</p>
+                        <p>Стоимость: ${priceToDisplayInModal}</p>
                     `;
                     modal.style.display = 'flex';
 
@@ -248,13 +250,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         selectedService = {
                             id: serviceId,
                             name: serviceName,
-                            description: serviceDescription,
-                            base_price: servicePrice
+                            base_price: servicePrice,
+                            calculated_price: totalPriceFromUrl ? parseFloat(totalPriceFromUrl) : null // Сохраняем рассчитанную цену
                         };
                         modal.style.display = 'none';
-                        if (validateStep(1)) {
-                            goToStep(2);
-                        }
+                        document.querySelector('.next-step').disabled = false;
                     };
 
                     // Обработчик отмены
@@ -332,13 +332,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Обновление сводки
     function updateSummary() {
+        if (!selectedService || !selectedDateTime) {
+            console.error('Service or datetime not selected for summary update.');
+            return;
+        }
+
         document.getElementById('summary-service').textContent = selectedService.name;
-        document.getElementById('summary-price').textContent = `${selectedService.base_price} руб.`;
-        document.getElementById('summary-datetime').textContent = 
-            `${selectedDateTime.date} ${selectedDateTime.start}`;
-        document.getElementById('summary-name').textContent = document.getElementById('client-name').value;
-        document.getElementById('summary-phone').textContent = document.getElementById('client-phone').value;
-        document.getElementById('summary-car').textContent = document.getElementById('client-car').value;
+        document.getElementById('summary-datetime').textContent = selectedDateTime.toLocaleString('ru-RU', {
+            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
+        });
+        // Используем рассчитанную цену, если она есть, иначе базовую
+        document.getElementById('summary-price').textContent = selectedService.calculated_price ? `${selectedService.calculated_price} руб.` : `${selectedService.base_price} руб.`;
+        document.getElementById('summary-name').textContent = document.getElementById('client-name').value.trim();
+        document.getElementById('summary-phone').textContent = document.getElementById('client-phone').value.trim();
+        document.getElementById('summary-car').textContent = document.getElementById('client-car').value.trim();
     }
     
     // Отправка формы

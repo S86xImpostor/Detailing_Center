@@ -253,7 +253,7 @@ function calculatePrice() {
     
     if (bookNowBtn) {
         bookNowBtn.style.display = 'inline-block';
-        bookNowBtn.href = `booking.html?service=${serviceId}&premium=${premium}&express=${express}&carSize=${carSize}&autostart=true`;
+        bookNowBtn.href = `booking.html?service=${serviceId}&premium=${premium}&express=${express}&carSize=${carSize}&totalPrice=${Math.round(price)}&autostart=true`;
     }
 }
 
