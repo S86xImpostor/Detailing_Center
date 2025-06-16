@@ -125,18 +125,40 @@ function applyFilters() {
         return;
     }
 
-    const category = document.getElementById('category-filter')?.value || '';
+    const selectedCategorySlug = document.getElementById('category-filter')?.value || '';
     const minPrice = parseInt(document.getElementById('price-from')?.value) || 0;
     const maxPrice = parseInt(document.getElementById('price-to')?.value) || Infinity;
-    const duration = parseInt(document.getElementById('duration-filter')?.value) || Infinity;
+    const durationFilterValue = parseInt(document.getElementById('duration-filter')?.value) || Infinity;
 
-    console.log('Применяем фильтры:', { category, minPrice, maxPrice, duration });
+    console.log('Применяем фильтры:', { selectedCategorySlug, minPrice, maxPrice, durationFilterValue });
+    console.log('Все услуги:', window.servicesData);
+    console.log('Все категории:', window.categoriesData);
+
+    let targetCategoryId = null;
+    if (selectedCategorySlug !== '') {
+        const selectedCategory = window.categoriesData.find(cat => cat.category_slug === selectedCategorySlug);
+        if (selectedCategory) {
+            targetCategoryId = selectedCategory.category_id;
+        }
+    }
+    console.log('Целевой category_id для фильтрации:', targetCategoryId);
 
     const filtered = window.servicesData.filter(service => {
-        const matchesCategory = category === '' || service.category === category;
+        const matchesCategory = selectedCategorySlug === '' || service.category_id === targetCategoryId;
         const matchesPrice = service.base_price >= minPrice && 
                            (maxPrice === Infinity || service.base_price <= maxPrice);
-        const matchesDuration = duration === Infinity || service.duration <= duration;
+        const matchesDuration = durationFilterValue === Infinity || service.duration_minutes <= durationFilterValue * 60;
+
+        console.log('Проверяем услугу:', {
+            serviceName: service.service_name,
+            serviceCategoryId: service.category_id,
+            targetCategoryId: targetCategoryId,
+            selectedCategorySlug: selectedCategorySlug,
+            matchesCategory: matchesCategory,
+            matchesPrice: matchesPrice,
+            matchesDuration: matchesDuration,
+            overallMatch: matchesCategory && matchesPrice && matchesDuration
+        });
 
         return matchesCategory && matchesPrice && matchesDuration;
     });
