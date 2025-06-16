@@ -942,3 +942,11 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-16 19:47:31,464 - INFO - Запуск Flask приложения
 2025-06-16 19:47:31,497 - WARNING -  * Debugger is active!
 2025-06-16 19:47:31,502 - INFO -  * Debugger PIN: 394-842-138
+2025-06-16 19:54:48,995 - INFO - Запуск Flask приложения
+2025-06-16 19:54:49,053 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-16 19:54:49,054 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-16 19:54:49,056 - INFO -  * Restarting with stat
+2025-06-16 19:54:49,507 - INFO - Запуск Flask приложения
+2025-06-16 19:54:49,543 - WARNING -  * Debugger is active!
+2025-06-16 19:54:49,549 - INFO -  * Debugger PIN: 394-842-138

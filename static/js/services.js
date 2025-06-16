@@ -112,8 +112,8 @@ function populateCalculator(services) {
 
     services.forEach(service => {
         const option = document.createElement('option');
-        option.value = service.id;
-        option.textContent = `${service.name} (${service.base_price} руб.)`;
+        option.value = service.service_id;
+        option.textContent = `${service.service_name} (${service.base_price} руб.)`;
         select.appendChild(option);
     });
 }
@@ -211,8 +211,11 @@ function calculatePrice() {
         return;
     }
 
-    const service = window.servicesData.find(s => s.id === serviceId);
-    if (!service) return;
+    const service = window.servicesData.find(s => s.service_id === serviceId);
+    if (!service) {
+        console.error('Услуга с ID', serviceId, 'не найдена.');
+        return;
+    }
 
     const premium = document.getElementById('premium-materials')?.checked || false;
     const express = document.getElementById('express-service')?.checked || false;
