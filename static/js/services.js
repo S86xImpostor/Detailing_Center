@@ -184,13 +184,15 @@ function initFilters() {
         }, 0);
     });
 
-    // Добавляем обработчики для живого обновления
+    // Удаляем обработчики для живого обновления
+    /*
     const inputs = form.querySelectorAll('input, select');
     inputs.forEach(input => {
         input.addEventListener('change', () => {
             applyFilters();
         });
     });
+    */
 }
 
 // Инициализация калькулятора
