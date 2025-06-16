@@ -259,17 +259,21 @@ app.post("/api/bookings", async (req, res) => {
     try {
         console.log('Получены данные для бронирования:', req.body);
         
-        const { 
-            service_id, 
-            client_name, 
-            client_phone, 
-            client_email, 
+        const {
+            service_id,
+            client_name,
+            client_phone,
+            client_email,
             client_car,
             booking_date,
             start_time,
             end_time,
-            notes
+            notes,
+            total_price
         } = req.body;
+
+        // Задаем фиктивное customer_id, так как данные клиента хранятся напрямую в bookings
+        const customer_id_to_use = 1; // Можно выбрать любое подходящее INTEGER значение
 
         // Проверяем обязательные поля
         if (!service_id || !client_name || !client_phone || !booking_date || !start_time || !end_time) {
@@ -280,45 +284,20 @@ app.post("/api/bookings", async (req, res) => {
         }
 
         try {
-            // Создаем или получаем клиента
-            let customerId;
-            const customers = await db.read('customers', { phone: client_phone });
-            console.log('Найденные клиенты:', customers);
-            
-            if (customers && customers.length > 0) {
-                customerId = customers[0].customer_id;
-                console.log('Найден существующий клиент:', customerId);
-                // Обновляем информацию о клиенте
-                await db.update('customers', 
-                    { 
-                        name: client_name, 
-                        email: client_email || null,
-                        last_visit: new Date().toISOString()
-                    }, 
-                    { customer_id: customerId }
-                );
-            } else {
-                // Создаем нового клиента
-                const customerData = {
-                    name: client_name,
-                    phone: client_phone,
-                    email: client_email || null,
-                    registration_date: new Date().toISOString()
-                };
-                console.log('Создаем нового клиента:', customerData);
-                customerId = await db.create('customers', customerData);
-                console.log('Создан новый клиент:', customerId);
-            }
-
             // Создаем запись в соответствии со структурой таблицы bookings
             const bookingData = {
-                customer_id: customerId,
+                customer_id: customer_id_to_use, // Используем фиктивный ID клиента
                 service_id: service_id,
+                client_name: client_name, // Передаем напрямую
+                client_phone: client_phone, // Передаем напрямую
+                client_email: client_email || null, // Передаем напрямую
+                client_car: client_car, // Передаем напрямую
                 booking_date: booking_date,
                 start_time: start_time,
                 end_time: end_time,
                 status: 'pending',
                 notes: notes || null,
+                total_price: total_price, // Передаем total_price
                 created_at: new Date().toISOString()
             };
             console.log('Создаем бронирование:', bookingData);

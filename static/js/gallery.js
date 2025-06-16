@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Инициализация before/after слайдера
+    // Удаляем инициализацию before/after слайдера
+    /*
     const initSlider = container => {
         let isDragging = false;
         
@@ -58,4 +59,5 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     document.querySelectorAll('.before-after-container').forEach(initSlider);
+    */
 });

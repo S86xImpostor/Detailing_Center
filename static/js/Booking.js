@@ -69,6 +69,18 @@ document.addEventListener('DOMContentLoaded', function() {
         activeStep.hidden = false;
         activeButton.classList.add('active');
         currentStep = step;
+
+        console.log(`Navigated to step: ${currentStep}`);
+        if (currentStep === 3) {
+            console.log('Attempting to focus on client-name input...');
+            const clientNameInput = document.getElementById('client-name');
+            if (clientNameInput) {
+                clientNameInput.focus();
+                console.log('Client name input focused:', document.activeElement === clientNameInput);
+            } else {
+                console.log('Client name input not found.');
+            }
+        }
     }
     
     // Обработчики кнопок
@@ -354,24 +366,25 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!validateStep(4)) return;
         
         try {
-            // Сначала создаем или получаем клиента
-            const customerData = {
-                name: document.getElementById('client-name').value.trim(),
-                phone: document.getElementById('client-phone').value.trim(),
-                email: document.getElementById('client-email').value.trim() || null,
-                car: document.getElementById('client-car').value.trim()
-            };
+            // Удаляем создание/получение клиента, так как данные клиента будут отправляться напрямую
+            // const customerData = {
+            //     name: document.getElementById('client-name').value.trim(),
+            //     phone: document.getElementById('client-phone').value.trim(),
+            //     email: document.getElementById('client-email').value.trim() || null,
+            //     car: document.getElementById('client-car').value.trim()
+            // };
 
             const bookingData = {
                 service_id: parseInt(selectedService.id),
-                client_name: customerData.name,
-                client_phone: customerData.phone,
-                client_email: customerData.email,
-                client_car: customerData.car,
+                client_name: document.getElementById('client-name').value.trim(), // Теперь отправляем напрямую
+                client_phone: document.getElementById('client-phone').value.trim(), // Теперь отправляем напрямую
+                client_email: document.getElementById('client-email').value.trim() || null, // Теперь отправляем напрямую
+                client_car: document.getElementById('client-car').value.trim(), // Теперь отправляем напрямую
                 booking_date: selectedDateTime.date,
                 start_time: selectedDateTime.start,
                 end_time: selectedDateTime.end,
-                notes: document.getElementById('client-notes').value.trim() || null
+                notes: document.getElementById('client-notes').value.trim() || null,
+                total_price: selectedService.calculated_price || selectedService.base_price // Добавляем total_price
             };
 
             const response = await fetch('/api/bookings', {
