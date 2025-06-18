@@ -238,6 +238,19 @@ def get_service_categories():
     finally:
         db.close()
 
+@app.route('/api/feedback/<int:feedback_id>', methods=['DELETE'])
+def delete_feedback(feedback_id):
+    db = get_db()
+    try:
+        db.execute('DELETE FROM feedback WHERE feedback_id = ?', (feedback_id,))
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 if __name__ == '__main__':
     logger.info("Запуск Flask приложения")
     app.run(debug=True, port=5000) 

@@ -1112,3 +1112,101 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-18 14:46:44,003 - DEBUG - Запрос на получение списка отзывов (JSON)
 2025-06-18 14:46:44,004 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
 2025-06-18 14:46:44,007 - INFO - 127.0.0.1 - - [18/Jun/2025 14:46:44] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:52:19,836 - INFO - Запуск Flask приложения
+2025-06-18 14:52:19,896 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:52:19,897 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:52:19,899 - INFO -  * Restarting with stat
+2025-06-18 14:52:20,331 - INFO - Запуск Flask приложения
+2025-06-18 14:52:20,365 - WARNING -  * Debugger is active!
+2025-06-18 14:52:20,370 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:52:42,487 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:52:42,487 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:52:42,491 - INFO - 127.0.0.1 - - [18/Jun/2025 14:52:42] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:54:18,897 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 14:54:18,960 - INFO -  * Restarting with stat
+2025-06-18 14:54:19,420 - INFO - Запуск Flask приложения
+2025-06-18 14:54:19,455 - WARNING -  * Debugger is active!
+2025-06-18 14:54:19,460 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:54:57,646 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 14:54:57,715 - INFO -  * Restarting with stat
+2025-06-18 14:54:58,132 - INFO - Запуск Flask приложения
+2025-06-18 14:54:58,160 - WARNING -  * Debugger is active!
+2025-06-18 14:54:58,165 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:55:05,800 - INFO - Запуск Flask приложения
+2025-06-18 14:55:05,850 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:55:05,851 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:55:05,853 - INFO -  * Restarting with stat
+2025-06-18 14:55:06,341 - INFO - Запуск Flask приложения
+2025-06-18 14:55:06,607 - WARNING -  * Debugger is active!
+2025-06-18 14:55:06,616 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:55:09,372 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:09,372 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:09,376 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:09] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:14,453 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:14] "OPTIONS /api/feedback/1 HTTP/1.1" 200 -
+2025-06-18 14:55:14,760 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:14,769 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:14] "DELETE /api/feedback/1 HTTP/1.1" 200 -
+2025-06-18 14:55:15,025 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:15,025 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:15,030 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:15] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:31,065 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:31] "OPTIONS /api/feedback/2 HTTP/1.1" 200 -
+2025-06-18 14:55:31,375 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:31,380 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:31] "DELETE /api/feedback/2 HTTP/1.1" 200 -
+2025-06-18 14:55:31,636 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:31,637 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:31,641 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:31] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:33,359 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:33] "OPTIONS /api/feedback/4 HTTP/1.1" 200 -
+2025-06-18 14:55:33,665 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:33,670 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:33] "DELETE /api/feedback/4 HTTP/1.1" 200 -
+2025-06-18 14:55:33,932 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:33,932 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:33,936 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:33] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:35,297 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:35] "OPTIONS /api/feedback/3 HTTP/1.1" 200 -
+2025-06-18 14:55:35,603 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:35,608 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:35] "DELETE /api/feedback/3 HTTP/1.1" 200 -
+2025-06-18 14:55:35,867 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:35,868 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:35,873 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:35] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:37,027 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:37] "OPTIONS /api/feedback/5 HTTP/1.1" 200 -
+2025-06-18 14:55:37,343 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:37,348 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:37] "DELETE /api/feedback/5 HTTP/1.1" 200 -
+2025-06-18 14:55:37,608 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:37,608 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:37,611 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:37] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:39,096 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:39] "OPTIONS /api/feedback/6 HTTP/1.1" 200 -
+2025-06-18 14:55:39,416 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:39,422 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:39] "DELETE /api/feedback/6 HTTP/1.1" 200 -
+2025-06-18 14:55:39,666 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:39,666 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:39,669 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:39] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:41,518 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:41] "OPTIONS /api/feedback/7 HTTP/1.1" 200 -
+2025-06-18 14:55:41,832 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:41,838 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:41] "DELETE /api/feedback/7 HTTP/1.1" 200 -
+2025-06-18 14:55:42,096 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:42,096 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:42,099 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:42] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:43,732 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:43] "OPTIONS /api/feedback/8 HTTP/1.1" 200 -
+2025-06-18 14:55:44,036 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:44,040 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:44] "DELETE /api/feedback/8 HTTP/1.1" 200 -
+2025-06-18 14:55:44,302 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:44,303 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:44,306 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:44] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:45,747 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:45] "OPTIONS /api/feedback/9 HTTP/1.1" 200 -
+2025-06-18 14:55:46,066 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:46,074 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:46] "DELETE /api/feedback/9 HTTP/1.1" 200 -
+2025-06-18 14:55:46,317 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:46,318 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:46,322 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:46] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:55:47,476 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:47] "OPTIONS /api/feedback/10 HTTP/1.1" 200 -
+2025-06-18 14:55:47,782 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:47,788 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:47] "DELETE /api/feedback/10 HTTP/1.1" 200 -
+2025-06-18 14:55:48,047 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:55:48,048 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:55:48,051 - INFO - 127.0.0.1 - - [18/Jun/2025 14:55:48] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:56:31,382 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:56:31,383 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:56:31,385 - INFO - 127.0.0.1 - - [18/Jun/2025 14:56:31] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:57:27,493 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:57:27,494 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:57:27,497 - INFO - 127.0.0.1 - - [18/Jun/2025 14:57:27] "GET /api/feedback/json HTTP/1.1" 200 -

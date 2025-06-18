@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <th>Отзыв</th>
                                 <th>Оценка</th>
                                 <th>Дата</th>
+                                <th>Действия</th>
                             </tr>
                         </thead>
                         <tbody id="feedback-table-body"></tbody>
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 const tbody = table.querySelector('#feedback-table-body');
                 if (!feedbacks || feedbacks.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="4">Нет отзывов</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="5">Нет отзывов</td></tr>';
                     return;
                 }
                 tbody.innerHTML = feedbacks.map(fb => `
@@ -101,8 +102,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${fb.message || ''}</td>
                         <td>${fb.rating || ''}</td>
                         <td>${fb.created_at ? new Date(fb.created_at).toLocaleString() : ''}</td>
+                        <td>
+                            <button class="btn-delete-feedback" data-id="${fb.feedback_id}">Удалить</button>
+                        </td>
                     </tr>
                 `).join('');
+
+                // Обработчик удаления
+                tbody.querySelectorAll('.btn-delete-feedback').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.dataset.id;
+                        if (confirm('Удалить этот отзыв?')) {
+                            fetch(`http://localhost:5000/api/feedback/${id}`, { method: 'DELETE' })
+                                .then(res => res.json())
+                                .then(result => {
+                                    if (result.success) {
+                                        loadFeedbacks();
+                                    } else {
+                                        alert('Ошибка при удалении: ' + (result.error || 'Неизвестная ошибка'));
+                                    }
+                                });
+                        }
+                    });
+                });
             });
     }
 
