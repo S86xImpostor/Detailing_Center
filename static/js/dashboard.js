@@ -37,24 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Загрузка услуг в таблицу
-    function loadServices() {
+    // Загрузка услуг из API
+    async function loadServices() {
+        const response = await fetch('http://localhost:5000/api/services');
+        const services = await response.json();
         const tbody = document.getElementById('services-table-body');
         tbody.innerHTML = services.map(service => `
             <tr>
                 <td>${service.name}</td>
-                <td>${service.price} руб.</td>
-                <td>${getCategoryName(service.category)}</td>
+                <td>${service.base_price} руб.</td>
+                <td>${service.category_name}</td>
                 <td>
                     <button class="btn-edit" data-id="${service.id}">✏️</button>
                     <button class="btn-delete" data-id="${service.id}">🗑️</button>
                 </td>
             </tr>
         `).join('');
-
-        // Инициализация кнопок удаления и редактирования
-        initDeleteButtons();
-        initEditButtons();
+        initDeleteButtons(services);
+        initEditButtons(services);
     }
 
     function getCategoryName(category) {
@@ -128,30 +128,28 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
-    // Удаление услуги
-    function initDeleteButtons() {
+    // Удаление услуги через API
+    function initDeleteButtons(services) {
         document.querySelectorAll('.btn-delete').forEach(btn => {
             btn.addEventListener('click', () => {
+                const id = btn.dataset.id;
                 if (confirm('Вы уверены, что хотите удалить эту услугу?')) {
-                    const id = parseInt(btn.dataset.id);
-                    const service = services.find(s => s.id === id);
-                    services = services.filter(s => s.id !== id);
-                    localStorage.setItem('services', JSON.stringify(services));
-                    loadServices();
-                    
-                    // Добавляем запись в историю
-                    window.historyManager.addHistoryEntry(
-                        'service',
-                        'Удаление услуги',
-                        `Удалена услуга: ${service.name}`
-                    );
+                    fetch(`http://localhost:5000/api/services/${id}`, { method: 'DELETE' })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.success) {
+                                loadServices();
+                            } else {
+                                alert('Ошибка при удалении: ' + (result.error || 'Неизвестная ошибка'));
+                            }
+                        });
                 }
             });
         });
     }
 
-    // Редактирование услуги
-    function initEditButtons() {
+    // Редактирование услуги через API
+    function initEditButtons(services) {
         document.querySelectorAll('.btn-edit').forEach(btn => {
             btn.addEventListener('click', () => {
                 const service = services.find(s => s.id === parseInt(btn.dataset.id));
@@ -160,61 +158,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Модальное окно для добавления/редактирования
+    // Модальное окно для добавления/редактирования услуги
     function openServiceModal(service = null) {
         const modal = document.getElementById('service-modal');
         const form = document.getElementById('service-form');
-
         if (service) {
             form.dataset.id = service.id;
             document.getElementById('modal-service-name').value = service.name;
-            document.getElementById('modal-service-price').value = service.price;
+            document.getElementById('modal-service-price').value = service.base_price;
             document.getElementById('modal-service-category').value = service.category;
+            document.getElementById('modal-service-description').value = service.description || '';
+            document.getElementById('modal-service-duration').value = service.duration || 1;
             document.querySelector('.modal-title').textContent = 'Редактировать услугу';
         } else {
             form.reset();
             form.removeAttribute('data-id');
             document.querySelector('.modal-title').textContent = 'Добавить услугу';
         }
-
         modal.style.display = 'flex';
     }
 
-    // Сохранение услуги
-    document.getElementById('service-form').addEventListener('submit', e => {
+    // Сохранение услуги через API
+    document.getElementById('service-form').addEventListener('submit', async e => {
         e.preventDefault();
-        
-        const id = e.target.dataset.id ? parseInt(e.target.dataset.id) : Date.now();
+        const form = e.target;
+        const id = form.dataset.id;
         const name = document.getElementById('modal-service-name').value;
-        const price = parseInt(document.getElementById('modal-service-price').value);
+        const price = parseFloat(document.getElementById('modal-service-price').value);
         const category = document.getElementById('modal-service-category').value;
-
-        const newService = { id, name, price, category };
-
-        // Обновление или добавление
-        const index = services.findIndex(s => s.id === id);
-        if (index >= 0) {
-            const oldService = services[index];
-            services[index] = newService;
-            
-            // Добавляем запись в историю об обновлении
-            window.historyManager.addHistoryEntry(
-                'service',
-                'Обновление услуги',
-                `Обновлена услуга: ${oldService.name} -> ${newService.name}`
-            );
+        const description = document.getElementById('modal-service-description').value;
+        const duration = parseInt(document.getElementById('modal-service-duration').value) || 1;
+        // Получаем category_id по slug
+        const categories = {
+            wash: 1,
+            polish: 2,
+            coating: 3,
+            interior: 4
+        };
+        const category_id = categories[category];
+        const payload = {
+            service_name: name,
+            base_price: price,
+            category_id: category_id,
+            description: description,
+            duration_minutes: duration * 60
+        };
+        if (id) {
+            // Обновление
+            await fetch(`http://localhost:5000/api/services/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
         } else {
-            services.push(newService);
-            
-            // Добавляем запись в историю о создании
-            window.historyManager.addHistoryEntry(
-                'service',
-                'Создание услуги',
-                `Создана новая услуга: ${newService.name}`
-            );
+            // Добавление
+            await fetch('http://localhost:5000/api/services', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
         }
-
-        localStorage.setItem('services', JSON.stringify(services));
         loadServices();
         document.getElementById('service-modal').style.display = 'none';
     });

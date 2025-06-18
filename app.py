@@ -251,6 +251,66 @@ def delete_feedback(feedback_id):
     finally:
         db.close()
 
+@app.route('/api/services', methods=['POST'])
+def create_service():
+    data = request.get_json()
+    db = get_db()
+    try:
+        cursor = db.execute('''
+            INSERT INTO services (category_id, service_name, description, base_price, duration_minutes, is_active, created_by, created_at)
+            VALUES (?, ?, ?, ?, ?, 1, 1, datetime('now'))
+        ''', (
+            data['category_id'],
+            data['service_name'],
+            data.get('description', ''),
+            data['base_price'],
+            data['duration_minutes']
+        ))
+        db.commit()
+        return jsonify({'success': True, 'service_id': cursor.lastrowid})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/services/<int:service_id>', methods=['PUT'])
+def update_service(service_id):
+    data = request.get_json()
+    db = get_db()
+    try:
+        db.execute('''
+            UPDATE services SET category_id=?, service_name=?, description=?, base_price=?, duration_minutes=?, updated_by=1, updated_at=datetime('now')
+            WHERE service_id=?
+        ''', (
+            data['category_id'],
+            data['service_name'],
+            data.get('description', ''),
+            data['base_price'],
+            data['duration_minutes'],
+            service_id
+        ))
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/services/<int:service_id>', methods=['DELETE'])
+def delete_service(service_id):
+    db = get_db()
+    try:
+        db.execute('DELETE FROM services WHERE service_id = ?', (service_id,))
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 if __name__ == '__main__':
     logger.info("Запуск Flask приложения")
     app.run(debug=True, port=5000) 
