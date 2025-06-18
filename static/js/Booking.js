@@ -267,6 +267,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         };
                         modal.style.display = 'none';
                         document.querySelector('.next-step').disabled = false;
+                        // Автоматический переход к следующему шагу
+                        document.querySelector('.next-step').click();
                     };
 
                     // Обработчик отмены
@@ -350,9 +352,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         document.getElementById('summary-service').textContent = selectedService.name;
-        document.getElementById('summary-datetime').textContent = selectedDateTime.toLocaleString('ru-RU', {
-            year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'
-        });
+        document.getElementById('summary-datetime').textContent = `${selectedDateTime.date} ${selectedDateTime.start}–${selectedDateTime.end}`;
         // Используем рассчитанную цену, если она есть, иначе базовую
         document.getElementById('summary-price').textContent = selectedService.calculated_price ? `${selectedService.calculated_price} руб.` : `${selectedService.base_price} руб.`;
         document.getElementById('summary-name').textContent = document.getElementById('client-name').value.trim();

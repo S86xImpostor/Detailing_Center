@@ -316,12 +316,24 @@ def create_customer():
     data = request.get_json()
     db = get_db()
     try:
-        cursor = db.execute('SELECT customer_id FROM customers WHERE name = ? AND (email = ? OR (email IS NULL AND ? IS NULL))',
-                            (data['name'], data.get('email'), data.get('email')))
-        result = cursor.fetchone()
-        if result:
-            customer_id = result['customer_id']
-        else:
+        # Новый поиск: сначала по телефону, потом по email, потом по имени
+        customer_id = None
+        if data.get('phone'):
+            cursor = db.execute('SELECT customer_id FROM customers WHERE phone = ?', (data['phone'],))
+            result = cursor.fetchone()
+            if result:
+                customer_id = result['customer_id']
+        if not customer_id and data.get('email'):
+            cursor = db.execute('SELECT customer_id FROM customers WHERE email = ?', (data['email'],))
+            result = cursor.fetchone()
+            if result:
+                customer_id = result['customer_id']
+        if not customer_id:
+            cursor = db.execute('SELECT customer_id FROM customers WHERE name = ?', (data['name'],))
+            result = cursor.fetchone()
+            if result:
+                customer_id = result['customer_id']
+        if not customer_id:
             cursor = db.execute(
                 'INSERT INTO customers (name, email, phone, registration_date) VALUES (?, ?, ?, datetime("now"))',
                 (data['name'], data.get('email'), data.get('phone'))

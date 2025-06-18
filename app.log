@@ -1438,3 +1438,199 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-18 16:16:38,662 - INFO - 127.0.0.1 - - [18/Jun/2025 16:16:38] "POST /api/bookings HTTP/1.1" 200 -
 2025-06-18 16:17:19,133 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
 2025-06-18 16:17:19,137 - INFO - 127.0.0.1 - - [18/Jun/2025 16:17:19] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:19:07,517 - INFO - Запуск Flask приложения
+2025-06-18 16:19:07,573 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 16:19:07,574 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 16:19:07,576 - INFO -  * Restarting with stat
+2025-06-18 16:19:08,016 - INFO - Запуск Flask приложения
+2025-06-18 16:19:08,048 - WARNING -  * Debugger is active!
+2025-06-18 16:19:08,054 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:21:50,974 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 16:21:51,038 - INFO -  * Restarting with stat
+2025-06-18 16:21:51,467 - INFO - Запуск Flask приложения
+2025-06-18 16:21:51,501 - WARNING -  * Debugger is active!
+2025-06-18 16:21:51,507 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:22:18,348 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 16:22:18,397 - INFO -  * Restarting with stat
+2025-06-18 16:22:18,849 - INFO - Запуск Flask приложения
+2025-06-18 16:22:18,884 - WARNING -  * Debugger is active!
+2025-06-18 16:22:18,889 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:22:41,361 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:41] "OPTIONS /api/customers HTTP/1.1" 200 -
+2025-06-18 16:22:41,625 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:22:41,629 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:41] "POST /api/customers HTTP/1.1" 200 -
+2025-06-18 16:22:41,672 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:41] "OPTIONS /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:22:41,953 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:22:41,961 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:41] "POST /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:22:48,016 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:22:48,019 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:48] "GET /api/bookings/client?phone=89129261812 HTTP/1.1" 200 -
+2025-06-18 16:22:50,787 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:22:50,790 - INFO - 127.0.0.1 - - [18/Jun/2025 16:22:50] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:23:02,054 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:23:02,056 - INFO - 127.0.0.1 - - [18/Jun/2025 16:23:02] "GET /api/bookings/client?phone=89129261812 HTTP/1.1" 200 -
+2025-06-18 16:23:38,234 - INFO - 127.0.0.1 - - [18/Jun/2025 16:23:38] "OPTIONS /api/customers HTTP/1.1" 200 -
+2025-06-18 16:23:38,485 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:23:38,491 - INFO - 127.0.0.1 - - [18/Jun/2025 16:23:38] "POST /api/customers HTTP/1.1" 200 -
+2025-06-18 16:23:38,548 - INFO - 127.0.0.1 - - [18/Jun/2025 16:23:38] "OPTIONS /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:23:38,812 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:23:38,818 - INFO - 127.0.0.1 - - [18/Jun/2025 16:23:38] "POST /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:00,639 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:00,642 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:00] "GET /api/bookings/client?phone=89123861719 HTTP/1.1" 200 -
+2025-06-18 16:24:18,125 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:24:18,126 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:18,127 - DEBUG - Найдено услуг: 12
+2025-06-18 16:24:18,128 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:18] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:24:19,810 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:19,813 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:19] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:24,313 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:24] "OPTIONS /api/bookings/4 HTTP/1.1" 200 -
+2025-06-18 16:24:24,562 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:24,568 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:24] "DELETE /api/bookings/4 HTTP/1.1" 200 -
+2025-06-18 16:24:24,623 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:24,626 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:24] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:26,026 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:26] "OPTIONS /api/bookings/5 HTTP/1.1" 200 -
+2025-06-18 16:24:26,332 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:26,345 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:26] "DELETE /api/bookings/5 HTTP/1.1" 200 -
+2025-06-18 16:24:26,597 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:26,600 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:26] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:27,556 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:27] "OPTIONS /api/bookings/1 HTTP/1.1" 200 -
+2025-06-18 16:24:27,861 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:27,873 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:27] "DELETE /api/bookings/1 HTTP/1.1" 200 -
+2025-06-18 16:24:28,128 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:28,131 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:28] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:29,332 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:29] "OPTIONS /api/bookings/3 HTTP/1.1" 200 -
+2025-06-18 16:24:29,641 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:29,654 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:29] "DELETE /api/bookings/3 HTTP/1.1" 200 -
+2025-06-18 16:24:29,906 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:29,909 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:29] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:24:36,707 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:36] "OPTIONS /api/bookings/6/status HTTP/1.1" 200 -
+2025-06-18 16:24:37,016 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:24:37,026 - INFO - 127.0.0.1 - - [18/Jun/2025 16:24:37] "PUT /api/bookings/6/status HTTP/1.1" 200 -
+2025-06-18 16:25:08,981 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:25:08,982 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:08,986 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:08] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:25:12,499 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:12,501 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:12] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:25:12,760 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:25:12,761 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:12,763 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:12] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:25:13,321 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:25:13,321 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:13,323 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:13] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:25:13,970 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:13,972 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:13] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:25:14,228 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:14,230 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:14] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:25:14,913 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:25:14,914 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:14,915 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:14] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:25:15,174 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:25:15,175 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:15,177 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:15] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:25:16,148 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:25:16,150 - INFO - 127.0.0.1 - - [18/Jun/2025 16:25:16] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:39:54,974 - INFO - 127.0.0.1 - - [18/Jun/2025 16:39:54] "OPTIONS /api/customers HTTP/1.1" 200 -
+2025-06-18 16:39:55,222 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:39:55,231 - INFO - 127.0.0.1 - - [18/Jun/2025 16:39:55] "POST /api/customers HTTP/1.1" 200 -
+2025-06-18 16:39:55,285 - INFO - 127.0.0.1 - - [18/Jun/2025 16:39:55] "OPTIONS /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:39:55,549 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:39:55,559 - INFO - 127.0.0.1 - - [18/Jun/2025 16:39:55] "POST /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:40:08,904 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:40:08,907 - INFO - 127.0.0.1 - - [18/Jun/2025 16:40:08] "GET /api/bookings/client?phone=12345678911 HTTP/1.1" 200 -
+2025-06-18 16:40:32,487 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:40:32,488 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:40:32,489 - DEBUG - Найдено услуг: 12
+2025-06-18 16:40:32,490 - INFO - 127.0.0.1 - - [18/Jun/2025 16:40:32] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:40:33,733 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:40:33,735 - INFO - 127.0.0.1 - - [18/Jun/2025 16:40:33] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:40:42,940 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 16:40:42,940 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:40:42,942 - INFO - 127.0.0.1 - - [18/Jun/2025 16:40:42] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 16:40:56,221 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:40:56,224 - INFO - 127.0.0.1 - - [18/Jun/2025 16:40:56] "GET /api/bookings/client?phone=89123861719 HTTP/1.1" 200 -
+2025-06-18 16:47:17,990 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:17] "OPTIONS /api/customers HTTP/1.1" 200 -
+2025-06-18 16:47:18,263 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:18,269 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:18] "POST /api/customers HTTP/1.1" 200 -
+2025-06-18 16:47:18,309 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:18] "OPTIONS /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:47:18,590 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:18,600 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:18] "POST /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:47:27,044 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:27,047 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:27] "GET /api/bookings/client?phone=88005553535 HTTP/1.1" 200 -
+2025-06-18 16:47:35,654 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:35,657 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:35] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:47:38,201 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:38,203 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:38] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:47:46,369 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:46,371 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:46] "GET /api/bookings/client?phone=89123861719 HTTP/1.1" 200 -
+2025-06-18 16:47:52,534 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:52,536 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:52] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:47:53,589 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:53,592 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:53] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:47:53,855 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:47:53,858 - INFO - 127.0.0.1 - - [18/Jun/2025 16:47:53] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:48:05,094 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:48:05,094 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:05,096 - DEBUG - Найдено услуг: 12
+2025-06-18 16:48:05,097 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:05] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:48:06,334 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:06,337 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:06] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:48:16,316 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:16] "OPTIONS /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:48:16,629 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:16,635 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:16] "PUT /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:48:23,707 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:23,711 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:23] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:48:26,228 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:26,231 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:26] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:48:52,415 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:52,417 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:52] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:48:58,802 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:48:58,805 - INFO - 127.0.0.1 - - [18/Jun/2025 16:48:58] "GET /api/bookings/client?phone=12345678911 HTTP/1.1" 200 -
+2025-06-18 16:50:09,419 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:09,422 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:09] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:10,992 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:10,994 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:10] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:13,504 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:13,506 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:13] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:14,293 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:14,295 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:14] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:14,748 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:14,750 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:14] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:15,014 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:15,016 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:15] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:15,173 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:15,175 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:15] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:15,655 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:15,659 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:15] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:15,919 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:15,921 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:15] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:19,187 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:19,189 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:19] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:25,290 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:25,293 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:25] "GET /api/bookings/client?phone=89123861719 HTTP/1.1" 200 -
+2025-06-18 16:50:40,114 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:50:40,114 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:40,117 - DEBUG - Найдено услуг: 12
+2025-06-18 16:50:40,118 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:40] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:50:41,757 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:41,759 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:41] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:50:45,488 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:45] "OPTIONS /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:50:45,800 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:45,810 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:45] "PUT /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:50:51,709 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:51,713 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:51] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:52,776 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:52,779 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:52] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:50:53,042 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:50:53,044 - INFO - 127.0.0.1 - - [18/Jun/2025 16:50:53] "GET /api/bookings/client?phone=89129261811 HTTP/1.1" 200 -
+2025-06-18 16:51:16,912 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:51:16,913 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:51:16,915 - DEBUG - Найдено услуг: 12
+2025-06-18 16:51:16,916 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:16] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:51:18,356 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:51:18,358 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:18] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:51:21,198 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:21] "OPTIONS /api/bookings/2 HTTP/1.1" 200 -
+2025-06-18 16:51:21,513 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:51:21,519 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:21] "DELETE /api/bookings/2 HTTP/1.1" 200 -
+2025-06-18 16:51:21,763 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:51:21,766 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:21] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:51:30,465 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:51:30,468 - INFO - 127.0.0.1 - - [18/Jun/2025 16:51:30] "GET /api/bookings/client?phone=89123861719 HTTP/1.1" 200 -
