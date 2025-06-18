@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (targetTab === 'feedback') {
                     loadFeedbacks();
                 }
+                // Загружаем записи при переключении на вкладку записей
+                if (targetTab === 'bookings') {
+                    loadBookings();
+                }
             });
         });
     }
@@ -126,6 +130,64 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 });
             });
+    }
+
+    // Загрузка записей (бронирований) в таблицу
+    async function loadBookings() {
+        const response = await fetch('http://localhost:5000/api/bookings');
+        const bookings = await response.json();
+        const bookingsTab = document.getElementById('bookings-tab');
+        let table = bookingsTab.querySelector('table');
+        if (!table) {
+            table = document.createElement('table');
+            table.className = 'data-table';
+            table.innerHTML = `
+                <thead>
+                    <tr>
+                        <th>Клиент</th>
+                        <th>Услуга</th>
+                        <th>Дата</th>
+                        <th>Время</th>
+                        <th>Статус</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-table-body"></tbody>
+            `;
+            bookingsTab.appendChild(table);
+        }
+        const tbody = table.querySelector('#bookings-table-body');
+        if (!bookings || bookings.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6">Нет записей</td></tr>';
+            return;
+        }
+        tbody.innerHTML = bookings.map(b => `
+            <tr>
+                <td>${b.customer_name || ''}</td>
+                <td>${b.service_name || ''}</td>
+                <td>${b.booking_date || ''}</td>
+                <td>${b.start_time || ''} - ${b.end_time || ''}</td>
+                <td>${b.status || ''}</td>
+                <td><button class="btn-delete-booking" data-id="${b.id}">Удалить</button></td>
+            </tr>
+        `).join('');
+        // Обработчик удаления
+        tbody.querySelectorAll('.btn-delete-booking').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const id = this.dataset.id;
+                if (confirm('Удалить эту запись?')) {
+                    fetch(`http://localhost:5000/api/bookings/${id}`, { method: 'DELETE' })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.success) {
+                                loadBookings();
+                            } else {
+                                alert('Ошибка при удалении: ' + (result.error || 'Неизвестная ошибка'));
+                            }
+                        });
+                }
+            });
+        });
     }
 
     // Удаление услуги через API

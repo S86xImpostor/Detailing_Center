@@ -364,51 +364,47 @@ document.addEventListener('DOMContentLoaded', function() {
     bookingForm.addEventListener('submit', async function(e) {
         e.preventDefault();
         if (!validateStep(4)) return;
-        
         try {
-            // Удаляем создание/получение клиента, так как данные клиента будут отправляться напрямую
-            // const customerData = {
-            //     name: document.getElementById('client-name').value.trim(),
-            //     phone: document.getElementById('client-phone').value.trim(),
-            //     email: document.getElementById('client-email').value.trim() || null,
-            //     car: document.getElementById('client-car').value.trim()
-            // };
-
+            // 1. Создаём/получаем клиента
+            const customerRes = await fetch('http://localhost:5000/api/customers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('client-name').value.trim(),
+                    phone: document.getElementById('client-phone').value.trim(),
+                    email: document.getElementById('client-email').value.trim() || null
+                })
+            });
+            const customerData = await customerRes.json();
+            if (!customerData.id) {
+                alert('Ошибка создания клиента');
+                return;
+            }
+            // 2. Создаём бронирование
             const bookingData = {
+                customer_id: customerData.id,
                 service_id: parseInt(selectedService.id),
-                client_name: document.getElementById('client-name').value.trim(), // Теперь отправляем напрямую
-                client_phone: document.getElementById('client-phone').value.trim(), // Теперь отправляем напрямую
-                client_email: document.getElementById('client-email').value.trim() || null, // Теперь отправляем напрямую
-                client_car: document.getElementById('client-car').value.trim(), // Теперь отправляем напрямую
                 booking_date: selectedDateTime.date,
                 start_time: selectedDateTime.start,
                 end_time: selectedDateTime.end,
-                notes: document.getElementById('client-notes').value.trim() || null,
-                total_price: selectedService.calculated_price || selectedService.base_price // Добавляем total_price
+                notes: document.getElementById('client-notes').value.trim() || null
             };
-
-            const response = await fetch('/api/bookings', {
+            const response = await fetch('http://localhost:5000/api/bookings', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(bookingData)
             });
-
             if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.error || 'Ошибка при создании записи');
             }
-
             const result = await response.json();
-            
             // Показываем сообщение об успехе
             bookingForm.hidden = true;
             document.getElementById('booking-success').hidden = false;
             document.getElementById('success-details').innerHTML = `
                 <p><strong>Услуга:</strong> ${selectedService.name}</p>
                 <p><strong>Дата:</strong> ${selectedDateTime.date} ${selectedDateTime.start}</p>
-                <p><strong>Номер записи:</strong> ${result.booking_id}</p>
             `;
         } catch (error) {
             console.error('Ошибка:', error);

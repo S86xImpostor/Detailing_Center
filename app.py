@@ -311,6 +311,98 @@ def delete_service(service_id):
     finally:
         db.close()
 
+@app.route('/api/customers', methods=['POST'])
+def create_customer():
+    data = request.get_json()
+    db = get_db()
+    try:
+        cursor = db.execute('SELECT customer_id FROM customers WHERE name = ? AND (email = ? OR (email IS NULL AND ? IS NULL))',
+                            (data['name'], data.get('email'), data.get('email')))
+        result = cursor.fetchone()
+        if result:
+            customer_id = result['customer_id']
+        else:
+            cursor = db.execute(
+                'INSERT INTO customers (name, email, phone, registration_date) VALUES (?, ?, ?, datetime("now"))',
+                (data['name'], data.get('email'), data.get('phone'))
+            )
+            customer_id = cursor.lastrowid
+            db.commit()
+        return jsonify({'id': customer_id})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/bookings', methods=['POST'])
+def create_booking():
+    data = request.get_json()
+    db = get_db()
+    try:
+        db.execute(
+            'INSERT INTO bookings (customer_id, service_id, booking_date, start_time, end_time, status, notes, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, datetime("now"))',
+            (
+                data['customer_id'],
+                data['service_id'],
+                data['booking_date'],
+                data['start_time'],
+                data['end_time'],
+                'pending',
+                data.get('notes', None)
+            )
+        )
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/bookings', methods=['GET'])
+def get_bookings():
+    db = get_db()
+    try:
+        cursor = db.execute('''
+            SELECT b.booking_id, b.booking_date, b.start_time, b.end_time, b.status, c.name as customer_name, s.service_name
+            FROM bookings b
+            LEFT JOIN customers c ON b.customer_id = c.customer_id
+            LEFT JOIN services s ON b.service_id = s.service_id
+            ORDER BY b.booking_date DESC, b.start_time DESC
+        ''')
+        bookings = [
+            {
+                'id': row['booking_id'],
+                'customer_name': row['customer_name'],
+                'service_name': row['service_name'],
+                'booking_date': row['booking_date'],
+                'start_time': row['start_time'],
+                'end_time': row['end_time'],
+                'status': row['status']
+            }
+            for row in cursor.fetchall()
+        ]
+        return jsonify(bookings)
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
+@app.route('/api/bookings/<int:booking_id>', methods=['DELETE'])
+def delete_booking(booking_id):
+    db = get_db()
+    try:
+        db.execute('DELETE FROM bookings WHERE booking_id = ?', (booking_id,))
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 if __name__ == '__main__':
     logger.info("Запуск Flask приложения")
     app.run(debug=True, port=5000) 
