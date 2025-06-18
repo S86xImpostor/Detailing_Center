@@ -403,6 +403,21 @@ def delete_booking(booking_id):
     finally:
         db.close()
 
+@app.route('/api/bookings/<int:booking_id>/status', methods=['PUT'])
+def update_booking_status(booking_id):
+    data = request.get_json()
+    new_status = data.get('status')
+    db = get_db()
+    try:
+        db.execute('UPDATE bookings SET status = ?, updated_at = datetime("now") WHERE booking_id = ?', (new_status, booking_id))
+        db.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        db.rollback()
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 if __name__ == '__main__':
     logger.info("Запуск Flask приложения")
     app.run(debug=True, port=5000) 

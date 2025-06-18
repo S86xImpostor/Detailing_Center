@@ -1343,3 +1343,41 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-18 15:59:41,034 - INFO - Запуск Flask приложения
 2025-06-18 15:59:41,068 - WARNING -  * Debugger is active!
 2025-06-18 15:59:41,073 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:00:35,620 - INFO - Запуск Flask приложения
+2025-06-18 16:00:35,680 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 16:00:35,681 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 16:00:35,683 - INFO -  * Restarting with stat
+2025-06-18 16:00:36,102 - INFO - Запуск Flask приложения
+2025-06-18 16:00:36,136 - WARNING -  * Debugger is active!
+2025-06-18 16:00:36,141 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:01:06,106 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:01:06,109 - INFO - 127.0.0.1 - - [18/Jun/2025 16:01:06] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:02:05,879 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 16:02:05,939 - INFO -  * Restarting with stat
+2025-06-18 16:02:06,401 - INFO - Запуск Flask приложения
+2025-06-18 16:02:06,435 - WARNING -  * Debugger is active!
+2025-06-18 16:02:06,441 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:02:58,089 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 16:02:58,148 - INFO -  * Restarting with stat
+2025-06-18 16:02:58,596 - INFO - Запуск Flask приложения
+2025-06-18 16:02:58,631 - WARNING -  * Debugger is active!
+2025-06-18 16:02:58,636 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 16:03:02,856 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:03:02,856 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:03:02,858 - DEBUG - Найдено услуг: 12
+2025-06-18 16:03:02,859 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:02] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:03:04,206 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:03:04,208 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:04] "GET /api/bookings HTTP/1.1" 200 -
+2025-06-18 16:03:07,713 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:07] "OPTIONS /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:03:07,979 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:03:07,989 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:07] "PUT /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:03:59,425 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:59] "OPTIONS /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:03:59,742 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:03:59,750 - INFO - 127.0.0.1 - - [18/Jun/2025 16:03:59] "PUT /api/bookings/2/status HTTP/1.1" 200 -
+2025-06-18 16:05:53,448 - DEBUG - Запрос на получение списка услуг
+2025-06-18 16:05:53,449 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:05:53,452 - DEBUG - Найдено услуг: 12
+2025-06-18 16:05:53,454 - INFO - 127.0.0.1 - - [18/Jun/2025 16:05:53] "GET /api/services HTTP/1.1" 200 -
+2025-06-18 16:05:54,832 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 16:05:54,835 - INFO - 127.0.0.1 - - [18/Jun/2025 16:05:54] "GET /api/bookings HTTP/1.1" 200 -

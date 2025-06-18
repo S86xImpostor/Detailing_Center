@@ -161,13 +161,23 @@ document.addEventListener('DOMContentLoaded', () => {
             tbody.innerHTML = '<tr><td colspan="6">Нет записей</td></tr>';
             return;
         }
+        const statusOptions = [
+            { value: 'pending', label: 'В ожидании' },
+            { value: 'confirmed', label: 'Подтверждена' },
+            { value: 'completed', label: 'Выполнена' },
+            { value: 'cancelled', label: 'Отменена' }
+        ];
         tbody.innerHTML = bookings.map(b => `
             <tr>
                 <td>${b.customer_name || ''}</td>
                 <td>${b.service_name || ''}</td>
                 <td>${b.booking_date || ''}</td>
                 <td>${b.start_time || ''} - ${b.end_time || ''}</td>
-                <td>${b.status || ''}</td>
+                <td>
+                    <select class="booking-status-select" data-id="${b.id}">
+                        ${statusOptions.map(opt => `<option value="${opt.value}"${b.status === opt.value ? ' selected' : ''}>${opt.label}</option>`).join('')}
+                    </select>
+                </td>
                 <td><button class="btn-delete-booking" data-id="${b.id}">Удалить</button></td>
             </tr>
         `).join('');
@@ -186,6 +196,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         });
                 }
+            });
+        });
+        // Обработчик изменения статуса
+        tbody.querySelectorAll('.booking-status-select').forEach(select => {
+            select.addEventListener('change', function() {
+                const id = this.dataset.id;
+                const newStatus = this.value;
+                fetch(`http://localhost:5000/api/bookings/${id}/status`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: newStatus })
+                })
+                .then(res => res.json())
+                .then(result => {
+                    if (!result.success) {
+                        alert('Ошибка при обновлении статуса: ' + (result.error || 'Неизвестная ошибка'));
+                        loadBookings();
+                    }
+                });
             });
         });
     }
