@@ -418,6 +418,50 @@ def update_booking_status(booking_id):
     finally:
         db.close()
 
+@app.route('/api/bookings/client', methods=['GET'])
+def get_client_bookings():
+    phone = request.args.get('phone')
+    email = request.args.get('email')
+    db = get_db()
+    try:
+        if phone:
+            cursor = db.execute('''
+                SELECT b.booking_id, b.booking_date, b.start_time, b.end_time, b.status, s.service_name
+                FROM bookings b
+                LEFT JOIN customers c ON b.customer_id = c.customer_id
+                LEFT JOIN services s ON b.service_id = s.service_id
+                WHERE c.phone = ?
+                ORDER BY b.booking_date DESC, b.start_time DESC
+            ''', (phone,))
+        elif email:
+            cursor = db.execute('''
+                SELECT b.booking_id, b.booking_date, b.start_time, b.end_time, b.status, s.service_name
+                FROM bookings b
+                LEFT JOIN customers c ON b.customer_id = c.customer_id
+                LEFT JOIN services s ON b.service_id = s.service_id
+                WHERE c.email = ?
+                ORDER BY b.booking_date DESC, b.start_time DESC
+            ''', (email,))
+        else:
+            return jsonify({'error': 'Не указан телефон или email'}), 400
+
+        bookings = [
+            {
+                'id': row['booking_id'],
+                'service_name': row['service_name'],
+                'booking_date': row['booking_date'],
+                'start_time': row['start_time'],
+                'end_time': row['end_time'],
+                'status': row['status']
+            }
+            for row in cursor.fetchall()
+        ]
+        return jsonify(bookings)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 if __name__ == '__main__':
     logger.info("Запуск Flask приложения")
     app.run(debug=True, port=5000) 

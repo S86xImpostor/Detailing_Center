@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка статуса заказа</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: #f7f7f7;
+        }
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 32px 24px 24px 24px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #007bff;
+        }
+        #status-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        #status-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        #status-form button {
+            padding: 10px 18px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #status-form button:hover {
+            background: #0056b3;
+        }
+        #orders-list {
+            margin-top: 1.5rem;
+        }
+        #orders-list table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fafbfc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        #orders-list th, #orders-list td {
+            padding: 12px 8px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        #orders-list th {
+            background: #f1f3f6;
+            color: #333;
+            font-weight: 500;
+        }
+        #orders-list tr:last-child td {
+            border-bottom: none;
+        }
+        #orders-list td {
+            color: #444;
+        }
+        #orders-list p {
+            text-align: center;
+            color: #888;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Проверить статус заказа</h1>
+        <form id="status-form">
+            <input type="text" id="client-phone" placeholder="Ваш телефон" required>
+            <button type="submit">Показать заказы</button>
+        </form>
+        <div id="orders-list"></div>
+    </div>
+    <script>
+        const statusMap = {
+            pending: 'В ожидании',
+            confirmed: 'Подтверждена',
+            completed: 'Выполнена',
+            cancelled: 'Отменена'
+        };
+        document.getElementById('status-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const phone = document.getElementById('client-phone').value.trim();
+            const res = await fetch(`http://localhost:5000/api/bookings/client?phone=${encodeURIComponent(phone)}`);
+            const bookings = await res.json();
+            const list = document.getElementById('orders-list');
+            if (!Array.isArray(bookings) || bookings.length === 0) {
+                list.innerHTML = '<p>Заказы не найдены</p>';
+                return;
+            }
+            list.innerHTML = '<table><tr><th>Услуга</th><th>Дата</th><th>Время</th><th>Статус</th></tr>' +
+                bookings.map(b => `<tr>
+                    <td>${b.service_name}</td>
+                    <td>${b.booking_date}</td>
+                    <td>${b.start_time} - ${b.end_time}</td>
+                    <td>${statusMap[b.status] || b.status}</td>
+                </tr>`).join('') +
+                '</table>';
+        });
+    </script>
+</body>
+</html> 
