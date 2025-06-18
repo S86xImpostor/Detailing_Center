@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Инициализация данных
     let services = JSON.parse(localStorage.getItem('services')) || [];
+    let feedbacks = JSON.parse(localStorage.getItem('feedback')) || [];
     
     // Инициализация вкладок
     function initTabs() {
@@ -27,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Загружаем историю при переключении на вкладку истории
                 if (targetTab === 'history') {
                     window.historyManager.loadHistory();
+                }
+                // Загружаем отзывы при переключении на вкладку отзывов
+                if (targetTab === 'feedback') {
+                    loadFeedbacks();
                 }
             });
         });
@@ -60,6 +65,45 @@ document.addEventListener('DOMContentLoaded', () => {
             interior: 'Салон'
         };
         return categories[category] || category;
+    }
+
+    // Загрузка отзывов в таблицу
+    function loadFeedbacks() {
+        fetch('http://localhost:5000/api/feedback/json')
+            .then(response => response.json())
+            .then(feedbacks => {
+                const feedbackTab = document.getElementById('feedback-tab');
+                let table = feedbackTab.querySelector('table');
+                if (!table) {
+                    table = document.createElement('table');
+                    table.className = 'data-table';
+                    table.innerHTML = `
+                        <thead>
+                            <tr>
+                                <th>Имя</th>
+                                <th>Отзыв</th>
+                                <th>Оценка</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody id="feedback-table-body"></tbody>
+                    `;
+                    feedbackTab.appendChild(table);
+                }
+                const tbody = table.querySelector('#feedback-table-body');
+                if (!feedbacks || feedbacks.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4">Нет отзывов</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = feedbacks.map(fb => `
+                    <tr>
+                        <td>${fb.customer_name || ''}</td>
+                        <td>${fb.message || ''}</td>
+                        <td>${fb.rating || ''}</td>
+                        <td>${fb.created_at ? new Date(fb.created_at).toLocaleString() : ''}</td>
+                    </tr>
+                `).join('');
+            });
     }
 
     // Удаление услуги

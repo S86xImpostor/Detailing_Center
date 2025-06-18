@@ -149,6 +149,39 @@ def get_feedbacks():
     finally:
         db.close()
 
+@app.route('/api/feedback/json', methods=['GET'])
+def get_feedbacks_json():
+    logger.debug("Запрос на получение списка отзывов (JSON)")
+    db = get_db()
+    try:
+        cursor = db.execute('''
+            SELECT f.feedback_id, f.rating, f.message, f.created_at, f.status, f.is_anonymous,
+                   c.name as customer_name, c.email as customer_email
+            FROM feedback f
+            LEFT JOIN customers c ON f.customer_id = c.customer_id
+            ORDER BY f.created_at DESC
+        ''')
+        feedbacks = [
+            {
+                'feedback_id': row['feedback_id'],
+                'customer_name': row['customer_name'] or 'Анонимный пользователь',
+                'customer_email': row['customer_email'],
+                'rating': row['rating'],
+                'message': row['message'],
+                'created_at': row['created_at'],
+                'status': row['status'],
+                'is_anonymous': row['is_anonymous']
+            }
+            for row in cursor.fetchall()
+        ]
+        return jsonify(feedbacks)
+    except Exception as e:
+        logger.error(f"Ошибка при получении отзывов (JSON): {str(e)}")
+        logger.error(f"Traceback: {traceback.format_exc()}")
+        return jsonify({'error': str(e)}), 500
+    finally:
+        db.close()
+
 @app.route('/api/services', methods=['GET'])
 def get_services():
     logger.debug("Запрос на получение списка услуг")

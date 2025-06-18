@@ -1030,3 +1030,85 @@ jinja2.exceptions.TemplateNotFound: _feedback_list.html
 2025-06-18 14:04:22,232 - INFO - Запуск Flask приложения
 2025-06-18 14:04:22,270 - WARNING -  * Debugger is active!
 2025-06-18 14:04:22,278 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:22:02,761 - INFO - Запуск Flask приложения
+2025-06-18 14:22:02,828 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:22:02,829 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:22:02,832 - INFO -  * Restarting with stat
+2025-06-18 14:22:03,270 - INFO - Запуск Flask приложения
+2025-06-18 14:22:03,302 - WARNING -  * Debugger is active!
+2025-06-18 14:22:03,309 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:27:59,970 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 14:28:00,014 - INFO -  * Restarting with stat
+2025-06-18 14:28:00,459 - INFO - Запуск Flask приложения
+2025-06-18 14:28:00,499 - WARNING -  * Debugger is active!
+2025-06-18 14:28:00,507 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:29:04,483 - INFO - Запуск Flask приложения
+2025-06-18 14:29:04,547 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:29:04,549 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:29:04,551 - INFO -  * Restarting with stat
+2025-06-18 14:29:05,010 - INFO - Запуск Flask приложения
+2025-06-18 14:29:05,050 - WARNING -  * Debugger is active!
+2025-06-18 14:29:05,057 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:29:24,675 - INFO - Запуск Flask приложения
+2025-06-18 14:29:24,729 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:29:24,730 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:29:24,732 - INFO -  * Restarting with stat
+2025-06-18 14:29:25,138 - INFO - Запуск Flask приложения
+2025-06-18 14:29:25,168 - WARNING -  * Debugger is active!
+2025-06-18 14:29:25,175 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:36:30,043 - INFO - Запуск Flask приложения
+2025-06-18 14:36:30,105 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:36:30,106 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:36:30,110 - INFO -  * Restarting with stat
+2025-06-18 14:36:30,657 - INFO - Запуск Flask приложения
+2025-06-18 14:36:30,703 - WARNING -  * Debugger is active!
+2025-06-18 14:36:30,711 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:38:53,836 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:53] "GET /admin/dashboard.html HTTP/1.1" 200 -
+2025-06-18 14:38:53,865 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:53] "GET /css/style.css HTTP/1.1" 200 -
+2025-06-18 14:38:54,037 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "GET /css/admin.css HTTP/1.1" 200 -
+2025-06-18 14:38:54,180 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "GET /js/history.js HTTP/1.1" 200 -
+2025-06-18 14:38:54,181 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "GET /js/dashboard.js HTTP/1.1" 200 -
+2025-06-18 14:38:54,511 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "GET /admin/login.html HTTP/1.1" 200 -
+2025-06-18 14:38:54,550 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-18 14:38:54,770 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "[36mGET /css/admin.css HTTP/1.1[0m" 304 -
+2025-06-18 14:38:54,864 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:54] "GET /js/login.js HTTP/1.1" 200 -
+2025-06-18 14:38:55,202 - INFO - 127.0.0.1 - - [18/Jun/2025 14:38:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-18 14:39:01,605 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:01] "[36mGET /admin/dashboard.html HTTP/1.1[0m" 304 -
+2025-06-18 14:39:01,924 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:01] "[36mGET /css/style.css HTTP/1.1[0m" 304 -
+2025-06-18 14:39:01,924 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:01] "[36mGET /css/admin.css HTTP/1.1[0m" 304 -
+2025-06-18 14:39:01,970 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:01] "[36mGET /js/history.js HTTP/1.1[0m" 304 -
+2025-06-18 14:39:01,971 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:01] "[36mGET /js/dashboard.js HTTP/1.1[0m" 304 -
+2025-06-18 14:39:02,825 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:39:02,826 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:39:02,838 - INFO - 127.0.0.1 - - [18/Jun/2025 14:39:02] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:41:47,225 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 14:41:47,284 - INFO -  * Restarting with stat
+2025-06-18 14:41:47,741 - INFO - Запуск Flask приложения
+2025-06-18 14:41:47,775 - WARNING -  * Debugger is active!
+2025-06-18 14:41:47,781 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:42:47,645 - INFO -  * Detected change in 'C:\\Users\\denis\\Desktop\\Detailing_Center-2\\app.py', reloading
+2025-06-18 14:42:47,706 - INFO -  * Restarting with stat
+2025-06-18 14:42:48,121 - INFO - Запуск Flask приложения
+2025-06-18 14:42:48,158 - WARNING -  * Debugger is active!
+2025-06-18 14:42:48,163 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:44:03,796 - INFO - Запуск Flask приложения
+2025-06-18 14:44:03,856 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-18 14:44:03,858 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-18 14:44:03,860 - INFO -  * Restarting with stat
+2025-06-18 14:44:04,329 - INFO - Запуск Flask приложения
+2025-06-18 14:44:04,366 - WARNING -  * Debugger is active!
+2025-06-18 14:44:04,374 - INFO -  * Debugger PIN: 224-867-283
+2025-06-18 14:46:35,593 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:46:35,594 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:46:35,597 - INFO - 127.0.0.1 - - [18/Jun/2025 14:46:35] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:46:35,870 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:46:35,871 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:46:35,873 - INFO - 127.0.0.1 - - [18/Jun/2025 14:46:35] "GET /api/feedback/json HTTP/1.1" 200 -
+2025-06-18 14:46:44,003 - DEBUG - Запрос на получение списка отзывов (JSON)
+2025-06-18 14:46:44,004 - DEBUG - Подключение к базе данных: C:\Users\denis\Desktop\Detailing_Center-2\database.sqlite
+2025-06-18 14:46:44,007 - INFO - 127.0.0.1 - - [18/Jun/2025 14:46:44] "GET /api/feedback/json HTTP/1.1" 200 -

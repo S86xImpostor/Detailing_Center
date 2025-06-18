@@ -16,7 +16,6 @@
                 <button class="tab-btn" data-tab="feedback">Отзывы</button>
                 <button class="tab-btn" data-tab="history">История операций</button>
             </div>
-            
             <div class="crud-content">
                 <div id="services-tab" class="tab-pane active">
                     <table class="data-table">
@@ -34,7 +33,12 @@
                     </table>
                     <button id="add-service" class="btn-primary">Добавить услугу</button>
                 </div>
-
+                <div id="bookings-tab" class="tab-pane">
+                    <!-- Здесь будет таблица записей -->
+                </div>
+                <div id="feedback-tab" class="tab-pane">
+                    <!-- Здесь будет таблица отзывов -->
+                </div>
                 <div id="history-tab" class="tab-pane">
                     <div class="history-filters">
                         <select id="history-type-filter">
@@ -61,7 +65,6 @@
                         </tbody>
                     </table>
                 </div>
-                
                 <div id="service-modal" class="modal">
                     <div class="modal-content">
                         <span class="modal-close">&times;</span>
@@ -82,7 +85,6 @@
             </div>
         </div>
     </div>
-
     <script src="../js/history.js"></script>
     <script src="../js/dashboard.js"></script>
 </body>
