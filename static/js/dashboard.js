@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const targetTab = button.dataset.tab;
                 button.classList.add('active');
                 document.getElementById(`${targetTab}-tab`).classList.add('active');
+
+                // Загружаем историю при переключении на вкладку истории
+                if (targetTab === 'history') {
+                    window.historyManager.loadHistory();
+                }
             });
         });
     }
@@ -63,9 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 if (confirm('Вы уверены, что хотите удалить эту услугу?')) {
                     const id = parseInt(btn.dataset.id);
-                    services = services.filter(service => service.id !== id);
+                    const service = services.find(s => s.id === id);
+                    services = services.filter(s => s.id !== id);
                     localStorage.setItem('services', JSON.stringify(services));
                     loadServices();
+                    
+                    // Добавляем запись в историю
+                    window.historyManager.addHistoryEntry(
+                        'service',
+                        'Удаление услуги',
+                        `Удалена услуга: ${service.name}`
+                    );
                 }
             });
         });
@@ -115,9 +128,24 @@ document.addEventListener('DOMContentLoaded', () => {
         // Обновление или добавление
         const index = services.findIndex(s => s.id === id);
         if (index >= 0) {
+            const oldService = services[index];
             services[index] = newService;
+            
+            // Добавляем запись в историю об обновлении
+            window.historyManager.addHistoryEntry(
+                'service',
+                'Обновление услуги',
+                `Обновлена услуга: ${oldService.name} -> ${newService.name}`
+            );
         } else {
             services.push(newService);
+            
+            // Добавляем запись в историю о создании
+            window.historyManager.addHistoryEntry(
+                'service',
+                'Создание услуги',
+                `Создана новая услуга: ${newService.name}`
+            );
         }
 
         localStorage.setItem('services', JSON.stringify(services));
@@ -141,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Инициализация
     initTabs();
     loadServices();
+    window.historyManager.initHistoryFilters();
 
     // Кнопка "Добавить услугу"
     document.getElementById('add-service').addEventListener('click', () => {

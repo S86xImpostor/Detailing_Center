@@ -47,6 +47,8 @@ function handleLogin(e) {
     if (login === savedData.login && encodedPassword === savedData.password) {
         // Сохраняем статус авторизации
         sessionStorage.setItem('isAdminAuthenticated', 'true');
+        // Сохраняем имя пользователя
+        sessionStorage.setItem('adminUsername', login);
         // Перенаправляем на dashboard.html
         window.location.href = 'dashboard.html';
     } else {
